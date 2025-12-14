@@ -7,7 +7,11 @@
     <script>
       // Single Page Apps for GitHub Pages
       // Store the current path and redirect to index
-      sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+      var path = location.pathname + location.search + location.hash;
+      // Only store if it's a valid relative path
+      if (path.startsWith('/') && !path.startsWith('//')) {
+        sessionStorage.setItem('redirect', path);
+      }
       location.replace('/');
     </script>
   </head>

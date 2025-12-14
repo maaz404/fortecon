@@ -24,9 +24,15 @@
       // Handle redirect from 404.html
       (function() {
         var redirect = sessionStorage.getItem('redirect');
-        if (redirect && redirect !== location.pathname) {
+        if (redirect) {
           sessionStorage.removeItem('redirect');
-          history.replaceState(null, null, redirect);
+          // Validate redirect starts with / and is a relative path
+          if (redirect.startsWith('/') && !redirect.startsWith('//')) {
+            var currentLocation = location.pathname + location.search + location.hash;
+            if (redirect !== currentLocation && redirect !== '/') {
+              history.replaceState(null, null, redirect);
+            }
+          }
         }
       })();
     </script>
