@@ -1,0 +1,23 @@
+{
+  "name": "fortecon",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fortecon - Solar Energy Solutions",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["solar", "energy", "renewable"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite": "^7.2.7"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
