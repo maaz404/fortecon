@@ -18,6 +18,18 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <script>
+      // Single Page Apps for GitHub Pages
+      // Handle redirect from 404.html
+      (function() {
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect && redirect !== location.pathname) {
+          sessionStorage.removeItem('redirect');
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
