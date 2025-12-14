@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found - Fortecon</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .error-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .error-code {
+        font-size: 6rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #ffd700;
+      }
+
+      .error-message {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .error-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        opacity: 0.9;
+      }
+
+      .home-button {
+        background-color: #ffd700;
+        color: #1a1a2e;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .home-button:hover {
+        background-color: #ffed4e;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <h1 class="error-message">Page Not Found</h1>
+      <p class="error-description">
+        Oops! The page you're looking for doesn't exist. It might have been
+        moved or deleted.
+      </p>
+      <a href="/" class="home-button">Back to Home</a>
+    </div>
+  </body>
+</html>
