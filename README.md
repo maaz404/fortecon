@@ -89,6 +89,20 @@ The `.github/workflows/pages.yml` file handles automatic deployment:
 - Uploads the `dist/` folder as an artifact
 - Deploys to GitHub Pages using `actions/deploy-pages@v4`
 
+### SPA Routing on GitHub Pages
+
+The website implements a Single Page Application (SPA) routing solution for GitHub Pages:
+
+1. **404.html Redirect**: When a user navigates directly to a deep link (e.g., via bookmark or shared URL), GitHub Pages serves the `404.html` page. This page stores the requested path in `sessionStorage` and redirects to the root `/`.
+
+2. **Index.html Recovery**: The main `index.html` includes a script that checks `sessionStorage` for a stored redirect path. If found, it uses `history.replaceState()` to restore the correct URL without causing a page reload.
+
+3. **Seamless Navigation**: This approach ensures that:
+   - Direct links to any page work correctly
+   - The browser's back/forward buttons work as expected
+   - The URL bar shows the correct path
+   - Search engines can properly index the site
+
 ## 📁 Project Structure
 
 ```
@@ -151,11 +165,31 @@ Ensure your repository has the following settings:
 
 ### DNS Configuration
 
-For custom domain setup:
-1. Add CNAME record pointing to `maaz404.github.io`
-2. Or add A records for GitHub Pages IPs
-3. Wait for DNS propagation
-4. Enable "Enforce HTTPS" in repository settings
+For custom domain setup with www.fortecon.tech:
+
+#### Recommended Setup:
+1. **Apex Domain (fortecon.tech)** - Add A records:
+   ```
+   185.199.108.153
+   185.199.109.153
+   185.199.110.153
+   185.199.111.153
+   ```
+
+2. **WWW Subdomain (www.fortecon.tech)** - Add CNAME record:
+   ```
+   www.fortecon.tech → maaz404.github.io
+   ```
+
+3. **Wait for DNS propagation** (can take up to 24-48 hours)
+
+4. **Enable "Enforce HTTPS"** in GitHub Pages settings after DNS validation completes
+
+#### Troubleshooting:
+- If you see "InvalidDNSError", verify DNS records are correct
+- If DNS records are correct but error persists, try temporarily disabling DNSSEC
+- Use `dig www.fortecon.tech` or online DNS checker to verify propagation
+- Ensure the CNAME file in the repository contains exactly: `www.fortecon.tech`
 
 ## 📞 Contact
 
