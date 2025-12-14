@@ -76,9 +76,9 @@ A modern, responsive website for Fortecon Solar Energy Solutions, built with Rea
 
 The website automatically deploys to GitHub Pages using GitHub Actions whenever you push to the main branch.
 
-- **Live Site**: [https://www.fortecon.tech](https://www.fortecon.tech)
+- **Live Site**: [https://fortecon.tech](https://fortecon.tech)
 - **GitHub Pages Source**: GitHub Actions
-- **Custom Domain**: www.fortecon.tech (configured in public/CNAME)
+- **Custom Domain**: fortecon.tech (configured in public/CNAME)
 
 ### Deployment Workflow
 
@@ -160,15 +160,16 @@ The website is fully responsive and optimized for:
 Ensure your repository has the following settings:
 1. Go to Settings > Pages
 2. Source: GitHub Actions
-3. Custom domain: www.fortecon.tech
-4. Enforce HTTPS: ✓ (enabled after DNS validation)
+3. Custom domain: fortecon.tech
+4. Click "Check again" to validate DNS
+5. Enforce HTTPS: ✓ (enable after DNS validation completes)
 
 ### DNS Configuration
 
-For custom domain setup with www.fortecon.tech:
+For custom domain setup with apex domain (fortecon.tech) as primary:
 
-#### Recommended Setup:
-1. **Apex Domain (fortecon.tech)** - Add A records:
+#### Required DNS Records:
+1. **Apex Domain (fortecon.tech)** - Add A records pointing to GitHub Pages IPs:
    ```
    185.199.108.153
    185.199.109.153
@@ -181,19 +182,24 @@ For custom domain setup with www.fortecon.tech:
    www.fortecon.tech → maaz404.github.io
    ```
 
-3. **Wait for DNS propagation** (can take up to 24-48 hours)
+This setup allows both fortecon.tech (primary) and www.fortecon.tech (redirect) to work correctly.
 
-4. **Enable "Enforce HTTPS"** in GitHub Pages settings after DNS validation completes
+#### Setup Steps:
+1. Configure DNS records as shown above
+2. Wait for DNS propagation (can take up to 24-48 hours)
+3. In GitHub Settings → Pages, set Custom domain to `fortecon.tech`
+4. Click "Check again" to validate DNS
+5. Enable "Enforce HTTPS" after DNS validation completes
 
 #### Troubleshooting:
 - If you see "InvalidDNSError", verify DNS records are correct
 - If DNS records are correct but error persists, try temporarily disabling DNSSEC
-- Use `dig www.fortecon.tech` or online DNS checker to verify propagation
-- Ensure the CNAME file in the repository contains exactly: `www.fortecon.tech`
+- Use `dig fortecon.tech` or online DNS checker to verify propagation
+- Ensure the CNAME file in the repository contains exactly: `fortecon.tech`
 
 ## 📞 Contact
 
-- **Website**: [www.fortecon.tech](https://www.fortecon.tech)
+- **Website**: [fortecon.tech](https://fortecon.tech)
 - **Repository**: [github.com/maaz404/fortecon](https://github.com/maaz404/fortecon)
 
 ## 📝 License
