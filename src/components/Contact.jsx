@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ function Contact() {
     phone: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,22 +21,50 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.name && formData.email && formData.message) {
-      alert(
-        `Thank you, ${formData.name}! We've received your message and will get back to you soon.`
-      );
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus(null), 3000);
+      return;
+    }
 
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Replace these with your EmailJS credentials
+      const serviceID = 'YOUR_SERVICE_ID'; // Get from EmailJS dashboard
+      const templateID = 'YOUR_TEMPLATE_ID'; // Get from EmailJS dashboard
+      const publicKey = 'YOUR_PUBLIC_KEY'; // Get from EmailJS dashboard
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Not provided',
+        message: formData.message,
+        to_name: 'Fortecon Team',
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+
+      setSubmitStatus('success');
       setFormData({
         name: '',
         email: '',
         phone: '',
         message: '',
       });
-    } else {
-      alert('Please fill in all required fields.');
+
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -173,13 +204,50 @@ function Contact() {
 
               <motion.button
                 type="submit"
-                className="w-full bg-orange text-navy font-bold py-4 px-8 rounded-lg hover:bg-orange-light transition-colors flex items-center justify-center gap-2 group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+                className={`w-full font-bold py-4 px-8 rounded-lg transition-colors flex items-center justify-center gap-2 group ${
+                  isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-orange text-navy hover:bg-orange-light'
+                }`}
+                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               >
-                Send Message
-                <Send className="group-hover:translate-x-1 transition-transform" size={20} />
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-navy border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="group-hover:translate-x-1 transition-transform" size={20} />
+                  </>
+                )}
               </motion.button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500 rounded-lg text-green-500"
+                >
+                  <CheckCircle size={20} />
+                  <span>Message sent successfully! We'll get back to you soon.</span>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500 rounded-lg text-red-500"
+                >
+                  <AlertCircle size={20} />
+                  <span>Failed to send message. Please try again or email us directly.</span>
+                </motion.div>
+              )}
             </form>
           </motion.div>
         </div>
