@@ -1,82 +1,108 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 function Navbar() {
-  const [activeSection, setActiveSection] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      let current = '';
-      const sections = document.querySelectorAll('section');
-      
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 200) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      setActiveSection(current);
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleClick = (e, targetId) => {
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Team', href: '#team' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  const scrollToSection = (e, href) => {
     e.preventDefault();
-    const target = document.querySelector(targetId);
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
     }
   };
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="logo">Fortecon</div>
-        <ul className="nav-links">
-          <li>
-            <a 
-              href="#home" 
-              className={activeSection === 'home' ? 'active' : ''}
-              onClick={(e) => handleClick(e, '#home')}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#services" 
-              className={activeSection === 'services' ? 'active' : ''}
-              onClick={(e) => handleClick(e, '#services')}
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#about" 
-              className={activeSection === 'about' ? 'active' : ''}
-              onClick={(e) => handleClick(e, '#about')}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#contact" 
-              className={activeSection === 'contact' ? 'active' : ''}
-              onClick={(e) => handleClick(e, '#contact')}
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-navy shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
+          <motion.a
+            href="#home"
+            onClick={(e) => scrollToSection(e, '#home')}
+            className="text-2xl md:text-3xl font-bold text-white tracking-wider"
+            whileHover={{ scale: 1.05 }}
+          >
+            FORTECON
+          </motion.a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="text-white hover:text-orange transition-colors duration-300 font-medium"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {link.name}
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
-    </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="md:hidden bg-navy-light"
+        >
+          <div className="px-4 py-6 space-y-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="block text-white hover:text-orange transition-colors duration-300 font-medium text-lg"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </motion.nav>
   );
 }
 

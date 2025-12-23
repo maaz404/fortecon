@@ -1,103 +1,49 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
+::-webkit-scrollbar-track {
+  background: #0a192f;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+::-webkit-scrollbar-thumb {
+  background: #f6b93b;
+  border-radius: 5px;
 }
 
-/* Navigation Bar */
-.navbar {
-    background-color: #1a1a2e;
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd93d;
 }
 
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #ffd700;
+/* Custom Styles */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-transparent border-2 border-orange text-orange font-semibold rounded-md hover:bg-orange hover:text-navy transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-orange text-navy font-semibold rounded-md hover:bg-orange-light transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-navy mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-xl md:text-2xl text-gray-600 mb-12;
+  }
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #ffd700;
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 8rem 0;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    animation: slideDown 0.8s ease-out;
-}
-
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    animation: fadeIn 1s ease-out 0.3s both;
-}
-
-.cta-button {
-    background-color: #ffd700;
-    color: #1a1a2e;
-    padding: 0.8rem 2.5rem;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    animation: fadeIn 1s ease-out 0.6s both;
-}
-
-.cta-button:hover {
-    background-color: #ffed4e;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Services Section */
-.services {
-    padding: 4rem 0;
-    background-color: #f4f4f4;
-}
 
 .services h2 {
     text-align: center;

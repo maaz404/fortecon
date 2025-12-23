@@ -1,74 +1,104 @@
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { Search, PenTool, HardHat, Settings } from 'lucide-react';
 
 function Services() {
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    cardsRef.current.forEach((card) => {
-      if (card) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-      }
-    });
-
-    return () => {
-      cardsRef.current.forEach((card) => {
-        if (card) observer.unobserve(card);
-      });
-    };
-  }, []);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const services = [
     {
-      title: 'Solar Panel Installation',
-      description: 'Professional installation of high-quality solar panels for residential and commercial properties.',
+      icon: Search,
+      title: 'Need Analysis & Survey',
+      description: 'Comprehensive site analysis and energy needs assessment to determine the optimal solar solution for your requirements.',
     },
     {
-      title: 'Energy Consultation',
-      description: 'Expert consultation to determine the best solar solution for your specific energy needs.',
+      icon: PenTool,
+      title: 'Design & Proposal',
+      description: 'Custom solar system design with detailed proposals, cost analysis, and ROI projections tailored to your needs.',
     },
     {
-      title: 'Maintenance & Support',
-      description: 'Ongoing maintenance and support to keep your solar system running at peak efficiency.',
+      icon: HardHat,
+      title: 'Construction Process',
+      description: 'Professional installation by certified engineers ensuring quality workmanship and compliance with all safety standards.',
     },
     {
-      title: 'Battery Storage',
-      description: 'Integrated battery storage solutions to maximize your solar energy usage and independence.',
+      icon: Settings,
+      title: 'Operations & Maintenance',
+      description: 'Ongoing support, system monitoring, and maintenance services to ensure optimal performance and longevity.',
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
-    <section id="services" className="services">
-      <div className="container">
-        <h2>Our Services</h2>
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="service-card"
-              ref={(el) => (cardsRef.current[index] = el)}
-            >
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-            </div>
-          ))}
-        </div>
+    <section id="services" className="py-20 bg-navy" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Our <span className="text-orange">Services</span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Comprehensive solar energy solutions from concept to completion
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-navy-light p-8 rounded-xl border border-orange/20 hover:border-orange transition-all duration-300 group"
+                whileHover={{ y: -10, scale: 1.02 }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-6 p-4 bg-orange/10 rounded-full group-hover:bg-orange transition-colors duration-300">
+                    <Icon className="text-orange group-hover:text-white transition-colors duration-300" size={48} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{service.description}</p>
+                </div>
+
+                {/* Number Badge */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-orange rounded-full flex items-center justify-center">
+                  <span className="text-navy font-bold">{index + 1}</span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
