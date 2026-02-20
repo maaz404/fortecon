@@ -72,20 +72,20 @@ function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      content: '+92 (51) 123-4567',
-      link: 'tel:+92511234567',
+      content: '+92 51 8739596',
+      link: 'tel:+92518739596',
     },
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@fortecon.com',
-      link: 'mailto:info@fortecon.com',
+      content: 'info@fortecon.com.pk',
+      link: 'mailto:info@fortecon.com.pk',
     },
     {
       icon: MapPin,
-      title: 'Rawalpindi Office',
-      content: 'SA-1098, Service Road Sadiqabad',
-      link: '#',
+      title: 'Head Office',
+      content: 'SA-1098, Service Road Sadiqabad, Rawalpindi',
+      link: 'https://maps.google.com/?q=SA-1098+Service+Road+Sadiqabad+Rawalpindi',
     },
   ];
 

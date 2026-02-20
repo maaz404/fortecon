@@ -122,15 +122,15 @@ function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Phone className="text-orange flex-shrink-0" size={20} />
-                <a href="tel:+92511234567" className="text-gray-400 hover:text-orange transition-colors">
-                  +92 (51) 123-4567
+                <a href="tel:+92518739596" className="text-gray-400 hover:text-orange transition-colors">
+                  +92 51 8739596
                 </a>
               </div>
               
               <div className="flex items-center gap-3">
                 <Mail className="text-orange flex-shrink-0" size={20} />
-                <a href="mailto:info@fortecon.com" className="text-gray-400 hover:text-orange transition-colors">
-                  info@fortecon.com
+                <a href="mailto:info@fortecon.com.pk" className="text-gray-400 hover:text-orange transition-colors">
+                  info@fortecon.com.pk
                 </a>
               </div>
 
@@ -138,7 +138,7 @@ function Footer() {
                 <p className="text-sm text-gray-400">
                   <span className="font-semibold text-white">PEC Certified</span>
                   <br />
-                  C6 Category
+                  C6 Category • Employee-Owned
                 </p>
               </div>
             </div>

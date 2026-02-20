@@ -1,65 +1,109 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Award, CheckCircle } from 'lucide-react';
+import { Award, CheckCircle, Target, Leaf, Users, Zap } from 'lucide-react';
 
 function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  const highlights = [
+    {
+      icon: Target,
+      title: 'Our Mission',
+      text: 'To provide innovative, reliable, and cost-effective solar energy solutions while fostering sustainable development for Pakistan.',
+    },
+    {
+      icon: Leaf,
+      title: 'Our Vision',
+      text: 'To be the leading solar energy company in Pakistan, driving the transition to clean, renewable energy for a sustainable future.',
+    },
+  ];
+
   return (
-    <section id="about" className="py-20 bg-white" ref={ref}>
+    <section id="about" className="py-24 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
           >
+            <motion.span
+              className="inline-block px-4 py-2 bg-orange/10 text-orange rounded-full text-sm font-semibold mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              About Us
+            </motion.span>
+            
             <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6">
-              About <span className="text-orange">Fortecon</span>
+              Welcome to <span className="text-orange">Fortecon</span>
             </h2>
             
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Established in <span className="font-bold text-orange">2019</span>, 
-              Fortecon is an employee-owned company certified by{' '}
-              <span className="font-bold text-navy">PEC (C6 Category)</span>. 
-              We strive to build an Eco-Friendly and sustainable world through 
-              innovative solar energy solutions.
+              <span className="font-bold text-navy">FORTECON Engineering & Development</span> is an 
+              employee-owned company certified by{' '}
+              <span className="font-bold text-orange">Pakistan Engineering Council (PEC)</span> with 
+              C6 Category certification. Established to transform Pakistan's energy landscape, we 
+              strive to build an Eco-Friendly and sustainable world through innovative solar energy solutions.
+            </p>
+
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              Our tagline <span className="text-orange font-bold italic">"Choose Your Life"</span> reflects 
+              our commitment to empowering clients with energy independence. We provide complete turnkey 
+              solar solutions — from initial consultation and system design to installation, commissioning, 
+              and long-term maintenance support.
             </p>
 
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
                 <p className="text-gray-700">
-                  Pakistan's First Service Oriented Solar Company
+                  <span className="font-semibold text-navy">Employee-Owned Company</span> — Our team is invested in your success
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
                 <p className="text-gray-700">
-                  PEC Certified (C6 Category) ensuring quality and compliance
+                  <span className="font-semibold text-navy">PEC Certified (C6 Category)</span> — Quality and compliance guaranteed
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
                 <p className="text-gray-700">
-                  Employee-owned structure fostering dedication and excellence
+                  <span className="font-semibold text-navy">Turnkey Solar Solutions</span> — From design to maintenance
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
+                <p className="text-gray-700">
+                  <span className="font-semibold text-navy">Government & Enterprise Clients</span> — Trusted by major institutions
                 </p>
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-3 bg-orange/10 px-6 py-4 rounded-lg">
-              <Award className="text-orange" size={32} />
-              <div>
-                <p className="text-sm text-gray-600">Certified By</p>
-                <p className="text-xl font-bold text-navy">PEC - C6 Category</p>
+            <div className="flex flex-wrap gap-4">
+              <div className="inline-flex items-center gap-3 bg-navy px-6 py-4 rounded-lg">
+                <Award className="text-orange" size={32} />
+                <div>
+                  <p className="text-sm text-gray-300">Certified By</p>
+                  <p className="text-lg font-bold text-white">PEC - C6 Category</p>
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-3 bg-orange/10 px-6 py-4 rounded-lg border border-orange/20">
+                <Users className="text-orange" size={32} />
+                <div>
+                  <p className="text-sm text-gray-600">Company Type</p>
+                  <p className="text-lg font-bold text-navy">Employee-Owned</p>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Image */}
+          {/* Right Side - Image & Cards */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
@@ -68,34 +112,56 @@ function About() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80"
-                alt="Solar Construction"
-                className="w-full h-[500px] object-cover"
+                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80"
+                alt="Solar Installation"
+                className="w-full h-[450px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent"></div>
               
-              {/* Stats Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange">5+</p>
-                    <p className="text-sm">Years</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange">100+</p>
-                    <p className="text-sm">Projects</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange">50+</p>
-                    <p className="text-sm">Clients</p>
-                  </div>
+              {/* Mission & Vision Cards */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {highlights.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.5, delay: 0.5 + index * 0.2 }}
+                      >
+                        <Icon className="text-orange mb-2" size={24} />
+                        <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
+                        <p className="text-gray-300 text-xs leading-relaxed">{item.text}</p>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
-            {/* Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-orange/20 rounded-2xl -z-10"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-navy/10 rounded-2xl -z-10"></div>
+            {/* Floating Stats Card */}
+            <motion.div 
+              className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border-l-4 border-orange"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-orange/10 rounded-full flex items-center justify-center">
+                  <Zap className="text-orange" size={28} />
+                </div>
+                <div>
+                  <p className="text-4xl font-bold text-navy">100+</p>
+                  <p className="text-gray-600 text-sm">Projects Completed</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Decorative Elements */}
+            <div className="absolute -top-6 -right-6 w-48 h-48 bg-orange/10 rounded-2xl -z-10"></div>
+            <div className="absolute -bottom-12 right-12 w-32 h-32 bg-navy/5 rounded-full -z-10"></div>
           </motion.div>
         </div>
       </div>

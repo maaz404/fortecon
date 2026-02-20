@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 
 function Clients() {
   const clients = [
-    'OGDCL',
-    'FBR',
-    'NHA',
-    'SPD',
-    'PRIMACO',
-    'COMSATS',
-    '5G Group',
+    'Government',
+    'Educational',
+    'Industrial',
+    'Commercial',
+    'Healthcare',
+    'Residential',
+    'Corporate',
   ];
 
   // Duplicate the array for seamless looping
@@ -25,10 +25,10 @@ function Clients() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
-            Our Satisfied <span className="text-orange">Clients</span>
+            Sectors We <span className="text-orange">Serve</span>
           </h2>
           <p className="text-xl text-gray-600">
-            Trusted by leading organizations across Pakistan
+            Delivering excellence across diverse industries nationwide
           </p>
         </motion.div>
 

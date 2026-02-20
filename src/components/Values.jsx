@@ -11,27 +11,27 @@ function Values() {
     {
       icon: Award,
       title: 'Quality',
-      description: 'We deliver exceptional quality in every project, ensuring the highest standards of workmanship.',
+      description: 'Premium components and expert installation delivering exceptional performance and longevity.',
     },
     {
       icon: Shield,
       title: 'Reliability',
-      description: 'Our clients trust us to deliver on time and exceed expectations with consistent performance.',
+      description: '98% client retention rate speaks to our consistent delivery and trusted partnerships.',
     },
     {
       icon: Lightbulb,
       title: 'Innovation',
-      description: 'We embrace cutting-edge technology and innovative solutions to stay ahead of the curve.',
+      description: 'Pioneering service-oriented solar solutions with cutting-edge technology integration.',
     },
     {
       icon: Users,
-      title: 'Diversity',
-      description: 'We celebrate diversity and foster an inclusive environment for all stakeholders.',
+      title: 'Integrity',
+      description: 'Employee-owned ethos ensuring every team member is invested in your success.',
     },
     {
       icon: Heart,
       title: 'Trust',
-      description: 'Building lasting relationships through transparency, integrity, and honest communication.',
+      description: 'Building lasting relationships through transparency and honest communication.',
     },
   ];
 

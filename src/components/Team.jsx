@@ -9,22 +9,28 @@ function Team() {
 
   const team = [
     {
-      name: 'Engr Faizan Akbar',
+      name: 'Ehsan Akbar',
       role: 'Chief Executive Officer',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
-      description: 'Leading Fortecon with strategic vision and technical expertise in renewable energy.',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+      description: 'Visionary leader driving Fortecon\'s growth and strategic direction in the renewable energy sector.',
     },
     {
-      name: 'Ehsan Akbar',
-      role: 'Head of Operations',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
-      description: 'Ensuring operational excellence and efficiency across all projects.',
+      name: 'Arslan Rana',
+      role: 'Director Business Development',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+      description: 'Strategic leader expanding Fortecon\'s market presence and fostering key client partnerships.',
+    },
+    {
+      name: 'Faizan Akbar',
+      role: 'Director Technical',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+      description: 'Technical expert with extensive experience in solar engineering and system design excellence.',
     },
     {
       name: 'Noaman Akbar Sheikh',
-      role: 'Head of Projects',
+      role: 'Director Projects',
       image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
-      description: 'Managing project delivery and client satisfaction with dedication.',
+      description: 'Expert project manager ensuring on-time delivery and exceeding client expectations consistently.',
     },
   ];
 
@@ -59,10 +65,10 @@ function Team() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
-            Our Leadership <span className="text-orange">Team</span>
+            Leadership <span className="text-orange">Team</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Meet the dedicated professionals driving Fortecon's success
+            Meet the industry experts driving innovation and excellence at Fortecon
           </p>
         </motion.div>
 
@@ -70,7 +76,7 @@ function Team() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {team.map((member, index) => (
             <motion.div
@@ -80,7 +86,7 @@ function Team() {
               whileHover={{ y: -10 }}
             >
               {/* Image Container */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-64 lg:h-72 overflow-hidden">
                 <img
                   src={member.image}
                   alt={member.name}
