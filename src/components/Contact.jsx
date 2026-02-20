@@ -72,8 +72,8 @@ function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      content: '+92 51 8739596',
-      link: 'tel:+92518739596',
+      content: '+92 339 8885505',
+      link: 'tel:+923398885505',
     },
     {
       icon: Mail,
@@ -84,8 +84,8 @@ function Contact() {
     {
       icon: MapPin,
       title: 'Head Office',
-      content: 'SA-1098, Service Road Sadiqabad, Rawalpindi',
-      link: 'https://maps.google.com/?q=SA-1098+Service+Road+Sadiqabad+Rawalpindi',
+      content: 'Office #5, 4th Floor, Gulberg ICON, Business Park, Gulberg Green, Islamabad',
+      link: 'https://maps.google.com/?q=Gulberg+ICON+Business+Park+Gulberg+Green+Islamabad',
     },
   ];
 

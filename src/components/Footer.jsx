@@ -68,29 +68,18 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Offices */}
+          {/* Column 2 - Office */}
           <div>
-            <h4 className="text-xl font-bold mb-6 text-orange">Our Offices</h4>
+            <h4 className="text-xl font-bold mb-6 text-orange">Our Office</h4>
             <div className="space-y-6">
-              <div>
-                <div className="flex items-start gap-3 mb-2">
-                  <MapPin className="text-orange flex-shrink-0 mt-1" size={20} />
-                  <div>
-                    <p className="font-semibold mb-1">Rawalpindi</p>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      SA-1098, Service Road Sadiqabad
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
               <div>
                 <div className="flex items-start gap-3">
                   <MapPin className="text-orange flex-shrink-0 mt-1" size={20} />
                   <div>
                     <p className="font-semibold mb-1">Islamabad</p>
                     <p className="text-gray-400 text-sm leading-relaxed">
-                      Office #5, Icon1, Gulberg Greens
+                      Office #5, 4th Floor, Gulberg ICON,<br />
+                      Business Park, Gulberg Green
                     </p>
                   </div>
                 </div>
@@ -122,8 +111,8 @@ function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Phone className="text-orange flex-shrink-0" size={20} />
-                <a href="tel:+92518739596" className="text-gray-400 hover:text-orange transition-colors">
-                  +92 51 8739596
+                <a href="tel:+923398885505" className="text-gray-400 hover:text-orange transition-colors">
+                  +92 339 8885505
                 </a>
               </div>
               
