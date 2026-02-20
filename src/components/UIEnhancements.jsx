@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, MessageCircle } from 'lucide-react';
 
 // Scroll Progress Indicator
 export function ScrollProgress() {
@@ -132,12 +132,49 @@ export function CursorFollower() {
   );
 }
 
+// WhatsApp Floating Button
+export function WhatsAppButton() {
+  const phoneNumber = '923398885505'; // Pakistan format without +
+  const message = encodeURIComponent('Hello! I am interested in learning more about Fortecon\'s solar solutions.');
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+  return (
+    <motion.a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-8 left-8 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#128C7E] transition-colors flex items-center justify-center group"
+      initial={{ opacity: 0, scale: 0, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: 1, duration: 0.5 }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      aria-label="Chat on WhatsApp"
+    >
+      <MessageCircle size={26} className="group-hover:scale-110 transition-transform" />
+      
+      {/* Pulse Effect */}
+      <motion.div
+        className="absolute inset-0 rounded-full bg-[#25D366]"
+        animate={{ scale: [1, 1.4], opacity: [0.5, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      />
+      
+      {/* Tooltip */}
+      <span className="absolute left-full ml-3 px-3 py-1.5 bg-navy text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        Chat with us
+      </span>
+    </motion.a>
+  );
+}
+
 // Combined UI Enhancements Component
 function UIEnhancements() {
   return (
     <>
       <ScrollProgress />
       <BackToTop />
+      <WhatsAppButton />
       {/* Uncomment below for custom cursor - may affect performance */}
       {/* <CursorFollower /> */}
     </>
