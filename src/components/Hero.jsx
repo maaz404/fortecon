@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Play, ChevronDown, Sun, Zap, Shield, MousePointer, Sparkles, Award, Users } from 'lucide-react';
+import { ArrowRight, Play, ChevronDown, Sun, Zap, Shield, MousePointer, Sparkles, Award, Users, Building2, Wrench, Cpu } from 'lucide-react';
 
 // Floating Particle Component
 function FloatingParticle({ delay, duration, size, left, top }) {
@@ -87,9 +87,15 @@ function Hero() {
   };
 
   const features = [
-    { icon: Sun, text: 'Complete Solar Solutions' },
-    { icon: Zap, text: 'Grid-Tied & Hybrid Systems' },
-    { icon: Shield, text: 'PEC C6 Certified' },
+    { icon: Building2, text: 'Civil Engineering Works' },
+    { icon: Zap, text: 'Electrical Engineering Works' },
+    { icon: Sun, text: 'Solar Energy Solutions' },
+    { icon: Wrench, text: 'Mechanical Works' },
+    { icon: Shield, text: 'Infrastructure Developments' },
+    { icon: Users, text: 'Project Management & Consultancy' },
+    { icon: Award, text: 'Renovation & Maintenance' },
+    { icon: Cpu, text: 'IT Solutions' },
+    { icon: Shield, text: 'Automation & Surveillance System' },
   ];
 
   return (
@@ -160,16 +166,26 @@ function Hero() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-3 mb-6"
+                className="inline-flex flex-col items-start gap-2 mb-6"
               >
-                <motion.div 
-                  className="h-px w-12 bg-gradient-to-r from-transparent to-orange"
-                  initial={{ width: 0 }}
-                  animate={{ width: 48 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                />
-                <span className="text-orange text-sm font-semibold tracking-widest uppercase">
-                  Solar Energy Experts
+                <div className="inline-flex items-center gap-3">
+                  <motion.div 
+                    className="h-px w-12 bg-gradient-to-r from-transparent to-orange"
+                    initial={{ width: 0 }}
+                    animate={{ width: 48 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  />
+                  <div className="inline-flex items-center gap-2.5 flex-wrap">
+                    <span className="px-3 py-1 rounded-full bg-[#25D366] text-navy text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-lg shadow-orange/30">
+                      Forte Energy
+                    </span>
+                    <span className="text-orange text-sm font-semibold tracking-widest uppercase">
+                      Solar Energy Experts
+                    </span>
+                  </div>
+                </div>
+                <span className="text-white/75 text-xs sm:text-sm font-medium pl-[3.75rem]">
+                  A project of Fortecon Engineering &amp; Development
                 </span>
               </motion.div>
 
@@ -243,9 +259,9 @@ function Hero() {
                 </motion.button>
               </motion.div>
 
-              {/* Feature Pills - Horizontal */}
+              {/* Service Pills - Responsive Grid */}
               <motion.div
-                className="flex flex-wrap gap-3 justify-center lg:justify-start"
+                className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 max-w-4xl mx-auto lg:mx-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -255,13 +271,13 @@ function Hero() {
                   return (
                     <motion.div
                       key={index}
-                      className="flex items-center gap-2 px-4 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-orange/30 transition-colors"
+                      className="flex items-center gap-2.5 px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:border-orange/30 hover:bg-white/10 transition-all min-h-[52px]"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                     >
                       <Icon className="text-orange" size={16} />
-                      <span className="text-white/90 text-sm">{feature.text}</span>
+                      <span className="text-white/90 text-sm leading-snug">{feature.text}</span>
                     </motion.div>
                   );
                 })}
@@ -295,14 +311,14 @@ function Hero() {
                       className="text-center p-4 bg-white/5 rounded-2xl border border-white/10"
                       whileHover={{ scale: 1.05, borderColor: 'rgba(246, 185, 59, 0.3)' }}
                     >
-                      <div className="text-3xl font-bold text-orange mb-1">100+</div>
+                      <div className="text-3xl font-bold text-orange mb-1">200+</div>
                       <div className="text-gray-400 text-sm">Projects Done</div>
                     </motion.div>
                     <motion.div 
                       className="text-center p-4 bg-white/5 rounded-2xl border border-white/10"
                       whileHover={{ scale: 1.05, borderColor: 'rgba(246, 185, 59, 0.3)' }}
                     >
-                      <div className="text-3xl font-bold text-orange mb-1">15MW+</div>
+                      <div className="text-3xl font-bold text-orange mb-1">10MW+</div>
                       <div className="text-gray-400 text-sm">Installed</div>
                     </motion.div>
                     <motion.div 
@@ -316,20 +332,30 @@ function Hero() {
                       className="text-center p-4 bg-white/5 rounded-2xl border border-white/10"
                       whileHover={{ scale: 1.05, borderColor: 'rgba(246, 185, 59, 0.3)' }}
                     >
-                      <div className="text-3xl font-bold text-orange mb-1">6+</div>
+                      <div className="text-3xl font-bold text-orange mb-1">11+</div>
                       <div className="text-gray-400 text-sm">Years Experience</div>
                     </motion.div>
                   </div>
 
                   {/* Certifications */}
-                  <div className="flex items-center gap-4 pt-4 border-t border-white/10">
-                    <div className="flex items-center gap-2 px-3 py-2 bg-orange/10 rounded-lg">
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="flex items-center gap-2 px-3 py-2 bg-orange/10 rounded-lg border border-orange/20">
                       <Award className="text-orange" size={18} />
-                      <span className="text-white text-sm font-medium">PEC C6</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2 bg-orange/10 rounded-lg">
+                      <span className="text-white text-sm font-medium">PEC Registered</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-orange/10 rounded-lg border border-orange/20">
+                        <Shield className="text-orange" size={18} />
+                        <span className="text-white text-sm font-medium">FBR Registered</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-orange/10 rounded-lg border border-orange/20">
                       <Users className="text-orange" size={18} />
-                      <span className="text-white text-sm font-medium">Employee Owned</span>
+                      <span className="text-white text-sm font-medium">Engineers Owned</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-orange/10 rounded-lg border border-orange/20">
+                        <Sparkles className="text-orange" size={18} />
+                        <span className="text-white text-sm font-medium">SECP Registered</span>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -2,6 +2,10 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
+import ehsanImage from '../../pictures/ehsan.jpeg';
+import arslanImage from '../../pictures/arslan.jpeg';
+import faizanImage from '../../pictures/faizan.jpeg';
+import noamanImage from '../../pictures/noaman.jpg';
 
 function Team() {
   const ref = useRef(null);
@@ -11,25 +15,25 @@ function Team() {
     {
       name: 'Ehsan Akbar',
       role: 'Chief Executive Officer',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+      image: ehsanImage,
       description: 'Visionary leader driving Fortecon\'s growth and strategic direction in the renewable energy sector.',
     },
     {
       name: 'Arslan Rana',
       role: 'Director Business Development',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+      image: arslanImage,
       description: 'Strategic leader expanding Fortecon\'s market presence and fostering key client partnerships.',
     },
     {
       name: 'Faizan Akbar',
       role: 'Director Technical',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+      image: faizanImage,
       description: 'Technical expert with extensive experience in solar engineering and system design excellence.',
     },
     {
       name: 'Noaman Akbar Sheikh',
       role: 'Director Projects',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+      image: noamanImage,
       description: 'Expert project manager ensuring on-time delivery and exceeding client expectations consistently.',
     },
   ];

@@ -27,7 +27,7 @@
 │  │                     │  │   [Project Image]   │      │
 │  │  • Established 2019 │  │                     │      │
 │  │  • PEC Certified    │  │   Stats Overlay:    │      │
-│  │  • Employee-owned   │  │   5Y | 100+ | 50+   │      │
+│  │  • (Pvt) Ltd        │  │   5Y | 100+ | 50+   │      │
 │  │                     │  │                     │      │
 │  │  [PEC Badge]        │  │                     │      │
 │  └─────────────────────┘  └─────────────────────┘      │
@@ -130,7 +130,7 @@
 │  │Choose   │ │Rawalpind│ │ Home    │ │📞 Phone │      │
 │  │Your Life│ │Islamabad│ │ About   │ │✉ Email  │      │
 │  │         │ │         │ │ ...     │ │         │      │
-│  │[f][t][i]│ │         │ │         │ │PEC C6   │      │
+│  │[f][t][i]│ │         │ │         │ │PEC Cert.│      │
 │  └─────────┘ └─────────┘ └─────────┘ └─────────┘      │
 │  ─────────────────────────────────────────────────      │
 │  © 2025 Fortecon | Privacy | Terms                      │

@@ -44,8 +44,7 @@ function Footer() {
               Choose Your Life
             </p>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Engineering & Development solutions for a sustainable future. 
-              Pakistan's First Service Oriented Solar Company.
+              Engineering and development solutions for a sustainable future.
             </p>
             
             {/* Social Links */}
@@ -78,8 +77,8 @@ function Footer() {
                   <div>
                     <p className="font-semibold mb-1">Islamabad</p>
                     <p className="text-gray-400 text-sm leading-relaxed">
-                      Office #5, 4th Floor, Gulberg ICON,<br />
-                      Business Park, Gulberg Green
+                      Office #5, 4th Floor, Umer Plaza,<br />
+                      Near Fresco Sweets, Main Blue Area, Islamabad
                     </p>
                   </div>
                 </div>
@@ -126,8 +125,6 @@ function Footer() {
               <div className="mt-6 pt-6 border-t border-gray-700">
                 <p className="text-sm text-gray-400">
                   <span className="font-semibold text-white">PEC Certified</span>
-                  <br />
-                  C6 Category • Employee-Owned
                 </p>
               </div>
             </div>

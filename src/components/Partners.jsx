@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 
 function Partners() {
   const partners = [
@@ -10,10 +11,23 @@ function Partners() {
     { name: 'Sungrow', category: 'Inverters' },
     { name: 'Growatt', category: 'Inverters' },
     { name: 'SMA', category: 'Inverters' },
+    { name: 'Fast Cables', category: 'Cables' },
+    { name: 'Pakistan Cables', category: 'Cables' },
+    { name: 'Newage Cables', category: 'Cables' },
+    { name: 'Millennium Cables MCI', category: 'Cables' },
+    { name: 'Hikvision', category: 'Surveillance' },
+    { name: 'Dhua Technology', category: 'Surveillance' },
+    { name: 'Narada', category: 'Battery' },
+    { name: 'FOX', category: 'Inverter' },
+    { name: 'Berger', category: 'Paint' },
   ];
 
+  const shuffledPartners = useMemo(() => {
+    return [...partners].sort(() => Math.random() - 0.5);
+  }, []);
+
   // Duplicate for seamless loop
-  const duplicatedPartners = [...partners, ...partners];
+  const duplicatedPartners = [...shuffledPartners, ...shuffledPartners];
 
   return (
     <section className="py-16 bg-gray-50 overflow-hidden">

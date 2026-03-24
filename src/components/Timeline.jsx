@@ -8,16 +8,16 @@ function Timeline() {
 
   const milestones = [
     {
-      year: '2019',
+      year: '2015',
       title: 'Company Founded',
-      description: 'Fortecon Engineering & Development was established with a mission to deliver innovative solar solutions.',
+      description: 'Fortecon Engineering & Development was established with a mission to deliver innovative solutions.',
       icon: Rocket,
       highlight: 'The Beginning',
     },
     {
       year: '2020',
-      title: 'PEC C6 Certification',
-      description: 'Achieved Pakistan Engineering Council C6 Category certification, establishing industry credibility.',
+      title: 'PEC Certification',
+      description: 'Achieved Pakistan Engineering Council certification, establishing industry credibility.',
       icon: Award,
       highlight: 'Milestone',
     },
@@ -30,8 +30,8 @@ function Timeline() {
     },
     {
       year: '2022',
-      title: '5MW Installed',
-      description: 'Reached 5MW of total installed capacity with 30+ successful projects across Pakistan.',
+      title: '10MW Installed',
+      description: 'Reached 10MW of total installed capacity with 200+ successful projects across Pakistan.',
       icon: Zap,
       highlight: 'Achievement',
     },
@@ -43,9 +43,9 @@ function Timeline() {
       highlight: 'Scaling',
     },
     {
-      year: '2024',
-      title: '15MW & Growing',
-      description: 'Crossed 15MW installed capacity with 100+ projects, solidifying our market leadership position.',
+      year: '2026',
+      title: 'Growing Stronger Together',
+      description: '300+ projects completed, demonstrating proven expertise across civil construction, solar energy, and MEP works while solidifying our market leadership',
       icon: Target,
       highlight: 'Present',
     },
@@ -78,9 +78,9 @@ function Timeline() {
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
+        <div className="relative pb-10">
           {/* Center Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange via-orange to-orange/30 hidden lg:block" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-5 w-1 bg-gradient-to-b from-orange via-orange to-orange/30 hidden lg:block" />
 
           {/* Timeline Items */}
           <div className="space-y-12 lg:space-y-0">
@@ -148,14 +148,25 @@ function Timeline() {
             })}
           </div>
 
-          {/* End Circle */}
+          {/* End Marker */}
           <motion.div
-            className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 -bottom-8 items-center justify-center"
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : { scale: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
+            className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bottom-0 items-center justify-center"
+            initial={{ opacity: 0, y: 12, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 12, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 1 }}
           >
-            <div className="w-8 h-8 bg-orange rounded-full animate-pulse" />
+            <div className="relative flex items-center justify-center w-10 h-10">
+              <motion.div
+                className="absolute inset-0 border-2 border-orange/40 rounded-full"
+                animate={{ scale: [1, 1.14, 1], opacity: [0.7, 0.35, 0.7] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="w-5 h-5 bg-orange rounded-full shadow-md shadow-orange/30"
+                animate={{ scale: [1, 1.08, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
           </motion.div>
         </div>
 
@@ -165,13 +176,13 @@ function Timeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-20 p-8 bg-gradient-to-r from-navy to-navy-light rounded-2xl"
+          className="text-center mt-14 p-8 bg-gradient-to-r from-navy to-navy-light rounded-2xl"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Our Vision for <span className="text-orange">2025</span>
+            Our Vision for <span className="text-orange">2026</span>
           </h3>
           <p className="text-gray-300 max-w-2xl mx-auto mb-6">
-            50MW installed capacity, 200+ projects, and a sustainable Pakistan powered by clean energy
+            To build a sustainable tomorrow, leading Pakistan in civil, solar, and MEP solutions that empower every client to choose their life, their power, their legacy
           </p>
           <motion.button
             className="px-8 py-3 bg-orange text-navy font-bold rounded-lg hover:bg-orange-dark transition-colors"

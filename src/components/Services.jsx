@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Search, PenTool, HardHat, Settings, Wrench, FileCheck, ShieldCheck, BarChart, Building2, Plug, Battery, Gauge } from 'lucide-react';
+import { Search, PenTool, HardHat, Settings, Building2, Plug, Zap, Battery, Gauge } from 'lucide-react';
 
 function Services() {
   const ref = useRef(null);
@@ -35,17 +35,33 @@ function Services() {
   ];
 
   const systemTypes = [
+    {
+      icon: Building2,
+      title: 'Civil Engineering Works',
+      description: 'Structural, infrastructure, and construction solutions delivered to project standards.',
+    },
+    {
+      icon: Settings,
+      title: 'Mechanical Works',
+      description: 'Reliable HVAC, piping, and mechanical system execution for efficient operations.',
+    },
+    {
+      icon: Zap,
+      title: 'Electrical Works / Automation',
+      description: 'Power distribution, controls, and automation systems for safe, smart performance.',
+    },
+    {
+      icon: Plug,
+      title: 'IT Solutions',
+      description: 'Integrated IT and network solutions to support connected, future-ready facilities.',
+    },
+  ];
+
+  const solarSystemTypes = [
     { icon: Plug, title: 'On-Grid Systems', description: 'Net metering enabled grid-tied solutions' },
     { icon: Battery, title: 'Hybrid Systems', description: 'Grid + battery backup solutions' },
     { icon: Building2, title: 'Commercial Scale', description: 'Large-scale industrial installations' },
     { icon: Gauge, title: 'Energy Audits', description: 'Comprehensive energy assessments' },
-  ];
-
-  const additionalServices = [
-    { icon: Wrench, title: 'System Upgrades', description: 'Modernize existing installations' },
-    { icon: FileCheck, title: 'Net Metering', description: 'DISCO application handling' },
-    { icon: ShieldCheck, title: 'Warranty Support', description: '25-year panel warranty' },
-    { icon: BarChart, title: 'Performance Analysis', description: 'Data-driven optimization' },
   ];
 
   const containerVariants = {
@@ -108,9 +124,6 @@ function Services() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-orange">Services</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Comprehensive solar energy solutions from concept to completion, with ongoing support
-          </p>
         </motion.div>
 
         {/* Main Services Grid */}
@@ -159,13 +172,29 @@ function Services() {
           })}
         </motion.div>
 
+        {/* Engineering Services Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.05 }}
+          className="text-center mb-8"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            Our <span className="text-orange">Engineering Services</span>
+          </h3>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            End-to-end multidisciplinary engineering services built for quality delivery, performance, and long-term reliability.
+          </p>
+        </motion.div>
+
         {/* System Types */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {systemTypes.map((system, index) => {
             const Icon = system.icon;
@@ -185,7 +214,23 @@ function Services() {
           })}
         </motion.div>
 
-        {/* Additional Services */}
+        {/* Solar Services Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-center mt-12 mb-8"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            Our <span className="text-orange">Solar Services</span>
+          </h3>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Innovative solar systems designed for reliable power, higher efficiency, and long-term value.
+          </p>
+        </motion.div>
+
+        {/* Solar System Types */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,21 +238,19 @@ function Services() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {additionalServices.map((service, index) => {
-            const Icon = service.icon;
+          {solarSystemTypes.map((system, index) => {
+            const Icon = system.icon;
             return (
               <motion.div
                 key={index}
-                className="flex items-center gap-4 p-4 bg-navy-light/50 rounded-xl border border-orange/10 hover:border-orange/30 transition-colors group"
-                whileHover={{ x: 5 }}
+                className="text-center p-6 bg-gradient-to-br from-orange/10 to-orange/5 rounded-xl border border-orange/20 hover:border-orange/40 transition-colors group"
+                whileHover={{ scale: 1.03 }}
               >
-                <div className="p-3 bg-orange/10 rounded-lg group-hover:bg-orange transition-colors duration-300">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange transition-colors duration-300">
                   <Icon className="text-orange group-hover:text-navy transition-colors" size={24} />
                 </div>
-                <div>
-                  <h4 className="text-white font-semibold text-sm">{service.title}</h4>
-                  <p className="text-gray-500 text-xs">{service.description}</p>
-                </div>
+                <h4 className="text-white font-semibold mb-1">{system.title}</h4>
+                <p className="text-gray-400 text-sm">{system.description}</p>
               </motion.div>
             );
           })}

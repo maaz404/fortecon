@@ -13,7 +13,6 @@ function Testimonials() {
       name: 'Ahmad Hassan',
       role: 'Project Director',
       company: 'Government Institution',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
       quote: 'Fortecon delivered an exceptional 500KW solar installation for our headquarters. Their professionalism, technical expertise, and commitment to quality exceeded our expectations. The system has been running flawlessly since installation.',
       rating: 5,
     },
@@ -22,7 +21,6 @@ function Testimonials() {
       name: 'Dr. Fatima Malik',
       role: 'Vice Chancellor',
       company: 'Educational Institution',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
       quote: 'The team at Fortecon demonstrated remarkable expertise in designing and implementing our campus-wide solar solution. They understood our unique requirements and delivered a system that has significantly reduced our energy costs.',
       rating: 5,
     },
@@ -31,7 +29,6 @@ function Testimonials() {
       name: 'Khalid Mahmood',
       role: 'Chief Engineer',
       company: 'Federal Authority',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
       quote: 'Working with Fortecon was a pleasure from start to finish. Their attention to detail during the installation process and ongoing maintenance support has been outstanding. Highly recommended for any solar project.',
       rating: 5,
     },
@@ -40,7 +37,6 @@ function Testimonials() {
       name: 'Bilal Ahmed',
       role: 'General Manager',
       company: 'Industrial Group',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
       quote: 'Fortecon\'s comprehensive approach to our solar energy project was impressive. From initial assessment to final commissioning, they provided exceptional service. The energy savings have been substantial.',
       rating: 5,
     },
@@ -131,7 +127,7 @@ function Testimonials() {
         {/* Testimonial Carousel */}
         <div className="relative">
           {/* Main Card */}
-          <div className="relative h-[400px] md:h-[350px] flex items-center justify-center">
+          <div className="relative h-[340px] md:h-[320px] flex items-center justify-center">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -142,7 +138,7 @@ function Testimonials() {
                 exit="exit"
                 className="absolute w-full max-w-4xl mx-auto"
               >
-                <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 relative overflow-hidden">
+                <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 relative overflow-hidden border border-gray-100">
                   {/* Background Quote Icon */}
                   <Quote 
                     className="absolute top-6 right-6 text-orange/10" 
@@ -150,27 +146,10 @@ function Testimonials() {
                     fill="currentColor"
                   />
 
-                  <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                    {/* Avatar */}
-                    <div className="flex-shrink-0">
-                      <div className="relative">
-                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-orange shadow-lg">
-                          <img
-                            src={testimonials[currentIndex].image}
-                            alt={testimonials[currentIndex].name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="absolute -bottom-2 -right-2 bg-orange rounded-full p-2 shadow-lg">
-                          <Quote className="text-navy" size={16} />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 text-center md:text-left">
+                  <div className="relative z-10 flex items-center justify-center">
+                    <div className="w-full max-w-3xl text-center">
                       {/* Stars */}
-                      <div className="flex justify-center md:justify-start gap-1 mb-4">
+                      <div className="flex justify-center gap-1 mb-5">
                         {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                           <Star
                             key={i}
@@ -182,12 +161,12 @@ function Testimonials() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6 italic">
+                      <p className="text-gray-700 text-lg md:text-2xl leading-relaxed mb-8 italic">
                         "{testimonials[currentIndex].quote}"
                       </p>
 
                       {/* Author */}
-                      <div>
+                      <div className="inline-flex flex-col items-center border-t border-gray-200 pt-5 px-4">
                         <h4 className="text-xl font-bold text-navy">
                           {testimonials[currentIndex].name}
                         </h4>
@@ -220,18 +199,32 @@ function Testimonials() {
           </button>
 
           {/* Dots Navigation */}
-          <div className="flex justify-center gap-3 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'w-8 h-3 bg-orange rounded-full'
-                    : 'w-3 h-3 bg-gray-300 rounded-full hover:bg-orange/50'
-                }`}
-              />
-            ))}
+          <div className="mt-8 flex justify-center">
+            <div className="inline-flex items-center gap-2 p-2 bg-white/90 border border-gray-200 rounded-full shadow-sm">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                  className="group relative w-4 h-4 rounded-full"
+                >
+                  {index === currentIndex && (
+                    <motion.span
+                      layoutId="activeTestimonialDot"
+                      className="absolute inset-0 rounded-full bg-orange shadow-md shadow-orange/40"
+                      transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+                    />
+                  )}
+                  <span
+                    className={`absolute inset-[3px] rounded-full transition-colors duration-300 ${
+                      index === currentIndex
+                        ? 'bg-navy/90'
+                        : 'bg-gray-300 group-hover:bg-gray-400'
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -243,14 +236,35 @@ function Testimonials() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 pt-12 border-t border-gray-200"
         >
-          <p className="text-center text-gray-500 text-sm mb-6 uppercase tracking-wider">
-            Trusted By Industry Leaders
-          </p>
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="hidden sm:block h-px w-16 bg-gradient-to-r from-transparent to-gray-300" />
+            <p className="text-center text-navy text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] px-4 py-2 rounded-full border border-gray-200 bg-white/80">
+              TRUSTED CLIENTS (GOVERNMENT &amp; PUBLIC SECTOR)
+            </p>
+            <div className="hidden sm:block h-px w-16 bg-gradient-to-l from-transparent to-gray-300" />
+          </div>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {['OGDCL', 'FBR', 'NHA', 'COMSATS', 'PRIMACO', '5G Group'].map((client, index) => (
+            {[
+              'UNHCR',
+              'CDA',
+              'Pak Data Com',
+              'OGDCL',
+              'MOFA',
+              'Classic Flour Mill',
+              'FBR',
+              'Pakistan Post',
+              'NHA',
+              'PAK Flour Mill',
+              'COMSATS',
+              'HDIP',
+              'PRIMACO',
+              'Telecom Foundation',
+              'PNCA',
+              '5G Group',
+            ].map((client, index) => (
               <motion.div
                 key={index}
-                className="text-2xl font-bold text-gray-300 hover:text-orange transition-colors cursor-default"
+                className="text-xl sm:text-2xl font-bold text-gray-300 hover:text-orange transition-colors cursor-default"
                 whileHover={{ scale: 1.1 }}
               >
                 {client}

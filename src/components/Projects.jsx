@@ -164,6 +164,24 @@ function Projects() {
       co2Saved: '405 tons/year',
       client: 'Commercial Mall',
     },
+    {
+      id: 9,
+      title: 'IYI Luxury Inn Swat Baghdary Hotel',
+      location: 'Baghdary, Swat',
+      capacity: 'MEP + Automation',
+      year: '2024',
+      category: 'commercial',
+      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80',
+      gallery: [
+        'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80',
+      ],
+      description: 'End-to-end project delivery for IYI Luxury Inn Swat Baghdary Hotel, covering complete electrical, mechanical, plumbing, and automation works with coordinated execution across all systems.',
+      features: ['Complete electrical works', 'Mechanical systems installation', 'Plumbing network execution', 'Integrated automation controls'],
+      savings: 'Optimized utility performance',
+      co2Saved: 'Improved energy efficiency',
+      client: 'IYI Luxury Inn',
+    },
   ];
 
   const filteredProjects = activeCategory === 'all' 

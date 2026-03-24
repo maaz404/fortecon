@@ -26,7 +26,7 @@ function Values() {
     {
       icon: Users,
       title: 'Integrity',
-      description: 'Employee-owned ethos ensuring every team member is invested in your success.',
+      description: 'A strong integrity-driven culture where every team member is invested in your success.',
     },
     {
       icon: Heart,

@@ -44,31 +44,36 @@ function About() {
             </h2>
             
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              <span className="font-bold text-navy">FORTECON Engineering & Development</span> is an 
-              employee-owned company certified by{' '}
-              <span className="font-bold text-orange">Pakistan Engineering Council (PEC)</span> with 
-              C6 Category certification. Established to transform Pakistan's energy landscape, we 
-              strive to build an Eco-Friendly and sustainable world through innovative solar energy solutions.
+              <span className="font-bold text-navy">FORTECON Engineering & Development (Pvt) Ltd</span> is 
+              certified by the{' '}
+              <span className="font-bold text-orange">Pakistan Engineering Council (PEC)</span>. Established 
+              to support Pakistan&apos;s evolving multi-sector needs, the company is committed to delivering 
+              sustainable and eco-friendly engineering solutions, with a strong focus on solar energy.
+            </p>
+
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              Guided by our tagline, <span className="text-orange font-bold italic">&ldquo;Choose Your Life,&rdquo;</span> 
+              we empower clients with energy independence through complete turnkey solutions, from design 
+              and installation to commissioning and long-term maintenance.
             </p>
 
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              Our tagline <span className="text-orange font-bold italic">"Choose Your Life"</span> reflects 
-              our commitment to empowering clients with energy independence. We provide complete turnkey 
-              solar solutions — from initial consultation and system design to installation, commissioning, 
-              and long-term maintenance support.
+              FORTECON delivers civil, electrical, and mechanical engineering works in full compliance 
+              with government regulations, PEC standards, and industry best practices, ensuring quality, 
+              efficiency, and reliability in every project.
             </p>
 
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
                 <p className="text-gray-700">
-                  <span className="font-semibold text-navy">Employee-Owned Company</span> — Our team is invested in your success
+                  <span className="font-semibold text-navy">Multi-Sector Engineering Capability</span> — Expertise across civil, electrical, and mechanical works
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
                 <p className="text-gray-700">
-                  <span className="font-semibold text-navy">PEC Certified (C6 Category)</span> — Quality and compliance guaranteed
+                  <span className="font-semibold text-navy">PEC</span> — Quality and compliance guaranteed
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -90,14 +95,14 @@ function About() {
                 <Award className="text-orange" size={32} />
                 <div>
                   <p className="text-sm text-gray-300">Certified By</p>
-                  <p className="text-lg font-bold text-white">PEC - C6 Category</p>
+                  <p className="text-lg font-bold text-white">PEC</p>
                 </div>
               </div>
               <div className="inline-flex items-center gap-3 bg-orange/10 px-6 py-4 rounded-lg border border-orange/20">
                 <Users className="text-orange" size={32} />
                 <div>
-                  <p className="text-sm text-gray-600">Company Type</p>
-                  <p className="text-lg font-bold text-navy">Employee-Owned</p>
+                  <p className="text-sm text-gray-600">Core Strength</p>
+                  <p className="text-lg font-bold text-navy">Multi-Sector Delivery</p>
                 </div>
               </div>
             </div>
@@ -153,7 +158,7 @@ function About() {
                   <Zap className="text-orange" size={28} />
                 </div>
                 <div>
-                  <p className="text-4xl font-bold text-navy">100+</p>
+                  <p className="text-4xl font-bold text-navy">200+</p>
                   <p className="text-gray-600 text-sm">Projects Completed</p>
                 </div>
               </div>

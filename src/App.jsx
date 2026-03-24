@@ -30,12 +30,12 @@ function App() {
       <Navbar />
       <Hero />
       <About />
-      <Team />
       <StatsCounter />
       <Values />
       <Services />
       <Partners />
       <Projects />
+      <Team />
       <Timeline />
       <Testimonials />
       <CTABanner />

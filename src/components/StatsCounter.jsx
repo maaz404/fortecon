@@ -43,14 +43,14 @@ function StatsCounter() {
   const stats = [
     {
       icon: Award,
-      value: 6,
+      value: 11,
       suffix: '+',
       label: 'Years Experience',
-      description: 'Industry expertise since 2019',
+      description: 'Industry expertise since 2015',
     },
     {
       icon: Building2,
-      value: 100,
+      value: 200,
       suffix: '+',
       label: 'Projects Delivered',
       description: 'Across multiple sectors',

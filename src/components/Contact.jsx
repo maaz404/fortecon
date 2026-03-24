@@ -84,8 +84,8 @@ function Contact() {
     {
       icon: MapPin,
       title: 'Head Office',
-      content: 'Office #5, 4th Floor, Gulberg ICON, Business Park, Gulberg Green, Islamabad',
-      link: 'https://maps.google.com/?q=Gulberg+ICON+Business+Park+Gulberg+Green+Islamabad',
+      content: 'Office #5, 4th Floor, Umer Plaza,\nNear Fresco Sweets, Main Blue Area, Islamabad',
+      link: 'https://maps.google.com/?q=Office+%235,+4th+Floor,+Umer+Plaza,+Near+Fresco+Sweets,+Main+Blue+Area,+Islamabad',
     },
   ];
 
@@ -140,7 +140,7 @@ function Contact() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm mb-1">{info.title}</p>
-                    <p className="text-white font-semibold">{info.content}</p>
+                    <p className="text-white font-semibold whitespace-pre-line">{info.content}</p>
                   </div>
                 </motion.a>
               );
