@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
-import { useTheme } from '../context/ThemeContext';
 import brandLogo from '../../pictures/logo.png';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,41 +120,6 @@ function Navbar() {
                 </motion.a>
               );
             })}
-            {/* Dark Mode Toggle */}
-            <motion.button
-              onClick={() => {
-                toggleTheme();
-                trackEvent('theme_toggle', { theme: isDark ? 'light' : 'dark' });
-              }}
-              className="ml-2 p-2 rounded-lg hover:bg-white/10 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-            >
-              <AnimatePresence mode="wait">
-                {isDark ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun size={20} className="text-yellow-400" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon size={20} className="text-slate-400" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
 
             {/* CTA Button */}
             <motion.a
@@ -176,43 +139,8 @@ function Navbar() {
             </motion.a>
           </div>
 
-          {/* Dark Mode Toggle (Mobile) and Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
-            <motion.button
-              onClick={() => {
-                toggleTheme();
-                trackEvent('theme_toggle', { theme: isDark ? 'light' : 'dark' });
-              }}
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-            >
-              <AnimatePresence mode="wait">
-                {isDark ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun size={20} className="text-yellow-400" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon size={20} className="text-slate-400" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-            
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
             <motion.button
               className="relative w-10 h-10 flex items-center justify-center text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -277,43 +205,6 @@ function Navbar() {
                   </motion.a>
                 );
               })}
-
-              {/* Dark Mode Toggle in Mobile Menu */}
-              <motion.button
-                onClick={() => {
-                  toggleTheme();
-                  trackEvent('theme_toggle', { theme: isDark ? 'light' : 'dark' });
-                }}
-                className="w-full px-4 py-3 rounded-lg font-medium text-lg text-white hover:bg-orange/5 hover:text-orange transition-colors flex items-center justify-between"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-              >
-                <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
-                <AnimatePresence mode="wait">
-                  {isDark ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Sun size={20} className="text-yellow-400" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Moon size={20} className="text-slate-400" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
               
               {/* Mobile CTA */}
               <motion.a
@@ -328,7 +219,7 @@ function Navbar() {
                 className="block mt-4 btn-cta-main btn-cta-main-dark-offset text-center text-lg px-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.05 }}
+                transition={{ delay: navLinks.length * 0.05 }}
               >
                 Request a Quote
               </motion.a>
