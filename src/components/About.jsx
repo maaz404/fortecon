@@ -21,7 +21,7 @@ function About() {
   ];
 
   return (
-    <section id="about" className="section-space bg-white" ref={ref}>
+    <section id="about" className="section-space section-bg-light-a section-divider-soft" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Text */}
@@ -43,7 +43,7 @@ function About() {
               Welcome to <span className="text-orange">Fortecon</span>
             </h2>
             
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-body-light-strong mb-6 leading-relaxed">
               <span className="font-bold text-navy">FORTECON Engineering & Development (Pvt) Ltd</span> is 
               certified by the{' '}
               <span className="font-bold text-orange">Pakistan Engineering Council (PEC)</span>. Established 
@@ -51,13 +51,13 @@ function About() {
               sustainable and eco-friendly engineering solutions, with a strong focus on solar energy.
             </p>
 
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-body-light-strong mb-6 leading-relaxed">
               Guided by our tagline, <span className="text-orange font-bold italic">&ldquo;Choose Your Life,&rdquo;</span> 
               we empower clients with energy independence through complete turnkey solutions, from design 
               and installation to commissioning and long-term maintenance.
             </p>
 
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+            <p className="text-lg text-body-light-strong mb-8 leading-relaxed">
               FORTECON delivers civil, electrical, and mechanical engineering works in full compliance 
               with government regulations, PEC standards, and industry best practices, ensuring quality, 
               efficiency, and reliability in every project.
@@ -66,25 +66,25 @@ function About() {
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
-                <p className="text-gray-700">
+                <p className="text-body-light-strong">
                   <span className="font-semibold text-navy">Multi-Sector Engineering Capability</span> — Expertise across civil, electrical, and mechanical works
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
-                <p className="text-gray-700">
+                <p className="text-body-light-strong">
                   <span className="font-semibold text-navy">PEC</span> — Quality and compliance guaranteed
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
-                <p className="text-gray-700">
+                <p className="text-body-light-strong">
                   <span className="font-semibold text-navy">Turnkey Solar Solutions</span> — From design to maintenance
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle className="text-orange flex-shrink-0 mt-1" size={24} />
-                <p className="text-gray-700">
+                <p className="text-body-light-strong">
                   <span className="font-semibold text-navy">Government & Enterprise Clients</span> — Trusted by major institutions
                 </p>
               </div>
@@ -101,7 +101,7 @@ function About() {
               <div className="inline-flex items-center gap-3 bg-orange/10 px-6 py-4 rounded-lg border border-orange/20">
                 <Users className="text-orange" size={32} />
                 <div>
-                  <p className="text-sm text-gray-600">Core Strength</p>
+                  <p className="text-sm text-body-light">Core Strength</p>
                   <p className="text-lg font-bold text-navy">Multi-Sector Delivery</p>
                 </div>
               </div>
@@ -115,15 +115,15 @@ function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="media-frame group">
               <img
                 src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80"
                 alt="Solar Installation"
-                className="w-full h-[450px] object-cover"
+                className="media-image h-[450px]"
                 loading="lazy"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent"></div>
+              <div className="absolute inset-0 media-overlay-dark"></div>
               
               {/* Mission & Vision Cards */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -140,7 +140,7 @@ function About() {
                       >
                         <Icon className="text-orange mb-2" size={24} />
                         <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
-                        <p className="text-gray-300 text-xs leading-relaxed">{item.text}</p>
+                        <p className="text-body-dark text-xs leading-relaxed">{item.text}</p>
                       </motion.div>
                     );
                   })}
@@ -156,12 +156,12 @@ function About() {
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-orange/10 rounded-full flex items-center justify-center">
+                <div className="icon-chip-light">
                   <Zap className="text-orange" size={28} />
                 </div>
                 <div>
                   <p className="text-4xl font-bold text-navy">200+</p>
-                  <p className="text-gray-600 text-sm">Projects Completed</p>
+                  <p className="text-body-light text-sm">Projects Completed</p>
                 </div>
               </div>
             </motion.div>

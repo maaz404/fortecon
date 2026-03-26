@@ -148,7 +148,7 @@ function StatsCounter() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading-shell"
         >
           <motion.span
             className="inline-block px-4 py-2 bg-orange/20 text-orange rounded-full text-sm font-semibold mb-4"
@@ -161,7 +161,7 @@ function StatsCounter() {
           <h2 className="heading-display text-white mb-4">
             Numbers That <span className="text-orange">Speak</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="section-subtitle-dark">
             Measurable results that demonstrate our commitment to excellence and sustainability
           </p>
         </motion.div>
@@ -183,7 +183,7 @@ function StatsCounter() {
               >
                 <div className="bg-navy-light/50 backdrop-blur-sm border border-orange/20 rounded-2xl p-6 text-center hover:border-orange/50 transition-all duration-300 h-full">
                   {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange to-orange-dark rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-orange/20">
+                  <div className="icon-chip-solid mb-4">
                     <Icon className="text-navy" size={28} />
                   </div>
 

@@ -52,14 +52,14 @@ function Timeline() {
   ];
 
   return (
-    <section className="section-space bg-gradient-to-b from-white to-gray-50 overflow-hidden" ref={ref}>
+    <section className="section-space section-bg-light-b section-divider-soft overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading-shell"
         >
           <motion.span
             className="inline-block px-4 py-2 bg-orange/10 text-orange rounded-full text-sm font-semibold mb-4"
@@ -72,7 +72,7 @@ function Timeline() {
           <h2 className="heading-display text-navy mb-4">
             Company <span className="text-orange">Timeline</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="section-subtitle-light">
             A journey of innovation, growth, and commitment to sustainable energy solutions
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ function Timeline() {
                   <div className={`w-full lg:w-1/2 ${isLeft ? 'lg:pr-16' : 'lg:pl-16'}`}>
                     <motion.div
                       className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden group"
-                      whileHover={{ y: -5 }}
+                      whileHover={{ y: -3 }}
                     >
                       {/* Background Gradient */}
                       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange/10 to-transparent rounded-bl-full" />
@@ -113,7 +113,7 @@ function Timeline() {
                       </div>
 
                       {/* Icon */}
-                      <div className="inline-flex items-center justify-center w-14 h-14 bg-orange/10 rounded-xl mb-4 group-hover:bg-orange transition-colors duration-300">
+                      <div className="icon-chip-light mb-4">
                         <Icon className="text-orange group-hover:text-white transition-colors duration-300" size={28} />
                       </div>
 
@@ -121,7 +121,7 @@ function Timeline() {
                       <div className="relative z-10">
                         <span className="text-sm font-semibold text-orange uppercase tracking-wider">{milestone.highlight}</span>
                         <h3 className="text-2xl font-bold text-navy mt-2 mb-3">{milestone.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
+                        <p className="text-body-light leading-relaxed">{milestone.description}</p>
                       </div>
 
                       {/* Connector Line (Mobile) */}
@@ -132,7 +132,7 @@ function Timeline() {
                   {/* Center Circle (Desktop) */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 hidden lg:flex items-center justify-center z-10">
                     <motion.div
-                      className="w-16 h-16 bg-white border-4 border-orange rounded-full flex items-center justify-center shadow-lg"
+                      className="w-16 h-16 bg-white border-2 border-orange/70 rounded-2xl flex items-center justify-center shadow-lg"
                       initial={{ scale: 0 }}
                       animate={isInView ? { scale: 1 } : { scale: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.15 + 0.3 }}
@@ -181,12 +181,12 @@ function Timeline() {
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Our Vision for <span className="text-orange">2026</span>
           </h3>
-          <p className="text-gray-300 max-w-2xl mx-auto mb-6">
+          <p className="text-body-dark max-w-2xl mx-auto mb-6">
             To build a sustainable tomorrow, leading Pakistan in civil, solar, and MEP solutions that empower every client to choose their life, their power, their legacy
           </p>
           <motion.button
             className="btn-cta-main btn-cta-main-dark-offset px-8 py-3"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
           >
             Join Our Journey

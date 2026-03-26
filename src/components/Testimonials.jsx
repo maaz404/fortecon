@@ -97,7 +97,7 @@ function Testimonials() {
   };
 
   return (
-    <section className="section-space bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section className="section-space section-bg-light-a section-divider-soft overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -105,7 +105,7 @@ function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading-shell"
         >
           <motion.span
             className="inline-block px-4 py-2 bg-orange/10 text-orange rounded-full text-sm font-semibold mb-4"
@@ -119,7 +119,7 @@ function Testimonials() {
           <h2 className="heading-display text-navy mb-4">
             What Our <span className="text-orange">Clients Say</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="section-subtitle-light">
             Trusted by leading organizations across Pakistan for quality solar solutions
           </p>
         </motion.div>
@@ -161,7 +161,7 @@ function Testimonials() {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-gray-700 text-lg md:text-2xl leading-relaxed mb-8 italic">
+                      <p className="text-body-light-strong text-lg md:text-2xl leading-relaxed mb-8 italic">
                         "{testimonials[currentIndex].quote}"
                       </p>
 
@@ -173,7 +173,7 @@ function Testimonials() {
                         <p className="text-orange font-medium">
                           {testimonials[currentIndex].role}
                         </p>
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-body-light-soft text-sm">
                           {testimonials[currentIndex].company}
                         </p>
                       </div>
@@ -264,8 +264,8 @@ function Testimonials() {
             ].map((client, index) => (
               <motion.div
                 key={index}
-                className="text-xl sm:text-2xl font-bold text-gray-300 hover:text-orange transition-colors cursor-default"
-                whileHover={{ scale: 1.1 }}
+                className="text-xl sm:text-2xl font-bold text-slate-400 hover:text-orange transition-colors cursor-default"
+                whileHover={{ scale: 1.04 }}
               >
                 {client}
               </motion.div>

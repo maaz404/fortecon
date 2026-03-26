@@ -30,7 +30,7 @@ function Partners() {
   const duplicatedPartners = [...shuffledPartners, ...shuffledPartners];
 
   return (
-    <section className="section-space-compact bg-gray-50 overflow-hidden">
+    <section className="section-space-compact section-bg-light-b section-divider-soft overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -38,10 +38,10 @@ function Partners() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="section-heading-shell"
         >
           <h2 className="text-lg font-semibold text-orange mb-2">We Partner With The Best</h2>
-          <p className="text-gray-600">Premium tier-1 equipment from globally recognized manufacturers</p>
+          <p className="section-subtitle-light">Premium tier-1 equipment from globally recognized manufacturers</p>
         </motion.div>
 
         {/* Scrolling Logos */}
@@ -75,7 +75,7 @@ function Partners() {
                     <span className="text-xl font-bold text-navy group-hover:text-orange transition-colors">
                       {partner.name}
                     </span>
-                    <span className="block text-xs text-gray-400 mt-1">{partner.category}</span>
+                    <span className="block text-xs text-body-light-soft mt-1">{partner.category}</span>
                   </div>
                 </motion.div>
               ))}
@@ -93,19 +93,19 @@ function Partners() {
         >
           <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
-            <span className="text-sm text-gray-600">Tier-1 Panels</span>
+            <span className="text-sm text-body-light">Tier-1 Panels</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
-            <span className="text-sm text-gray-600">25 Year Warranty</span>
+            <span className="text-sm text-body-light">25 Year Warranty</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
-            <span className="text-sm text-gray-600">Certified Installers</span>
+            <span className="text-sm text-body-light">Certified Installers</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
-            <span className="text-sm text-gray-600">Quality Assured</span>
+            <span className="text-sm text-body-light">Quality Assured</span>
           </div>
         </motion.div>
       </div>

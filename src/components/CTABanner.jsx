@@ -107,7 +107,7 @@ function CTABanner() {
               {['Free Consultation', 'Expert Assessment', '25yr Warranty', 'O&M Support'].map((benefit, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full"
+                  className="badge-pill-soft bg-white/10 backdrop-blur-sm border-white/20 text-white"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -163,7 +163,7 @@ function CTABanner() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="bg-white rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-8 shadow-2xl relative overflow-hidden">
               {/* Decorative Corner */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-orange/10 rounded-bl-full" />
               

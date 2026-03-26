@@ -107,12 +107,12 @@ function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading-shell"
         >
           <h2 className="heading-display text-white mb-4">
             Get In <span className="text-orange">Touch</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="section-subtitle-dark">
             Have a project in mind? Let's discuss how we can help you harness solar energy
           </p>
         </motion.div>

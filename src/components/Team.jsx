@@ -60,18 +60,18 @@ function Team() {
   };
 
   return (
-    <section id="team" className="section-space-compact bg-gray-50" ref={ref}>
+    <section id="team" className="section-space-compact section-bg-light-b section-divider-soft" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading-shell"
         >
           <h2 className="heading-display text-navy mb-4">
             Leadership <span className="text-orange">Team</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="section-subtitle-light">
             Meet the industry experts driving innovation and excellence at Fortecon
           </p>
         </motion.div>
@@ -86,22 +86,22 @@ function Team() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group"
-              whileHover={{ y: -10 }}
+              className="surface-card-light rounded-2xl overflow-hidden group"
+              whileHover={{ y: -6 }}
             >
               {/* Image Container */}
               <div className="relative h-64 lg:h-72 overflow-hidden">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="media-image"
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent opacity-80"></div>
+                <div className="absolute inset-0 media-overlay-dark"></div>
                 
                 {/* Social Links Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   <div className="flex justify-center gap-4">
                     <button className="p-2 bg-orange rounded-full hover:bg-orange-light transition-colors">
                       <Linkedin size={20} />
@@ -117,7 +117,7 @@ function Team() {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-navy mb-2">{member.name}</h3>
                 <p className="text-orange font-semibold mb-4">{member.role}</p>
-                <p className="text-gray-600 leading-relaxed">{member.description}</p>
+                <p className="text-body-light leading-relaxed">{member.description}</p>
               </div>
             </motion.div>
           ))}

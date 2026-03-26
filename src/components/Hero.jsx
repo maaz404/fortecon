@@ -241,9 +241,9 @@ function Hero() {
                 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.65, delay: 0.22 }}
               >
-                <span className="block">Cut Your Energy Costs</span>
+                <span className="block">Build a Better Tomorrow</span>
                 <span className="block mt-2">
                   With{' '}
                   <span className="text-orange relative inline-block min-w-[4ch]">
@@ -262,7 +262,7 @@ function Hero() {
                 className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.65, delay: 0.32 }}
               >
                 Fortecon delivers turnkey solar and engineering services, from survey and design to installation, net metering, and long-term support.
                 <span className="text-white font-medium block mt-2">See what your project can save from day one.</span>
@@ -273,7 +273,7 @@ function Hero() {
                 className="flex flex-col sm:flex-row gap-4 items-center lg:items-start justify-center lg:justify-start mb-10"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.65, delay: 0.4 }}
               >
                 <motion.button
                   onClick={() => {
@@ -284,7 +284,7 @@ function Hero() {
                     scrollToSection('#services');
                   }}
                   className="group relative btn-cta-main btn-cta-main-dark-offset rounded-xl overflow-hidden hover:shadow-orange/50 transition-shadow"
-                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileHover={{ scale: 1.01, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
@@ -317,7 +317,7 @@ function Hero() {
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto lg:mx-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.65, delay: 0.5 }}
               >
                 {features.map((feature, index) => {
                   const Icon = feature.icon;
@@ -328,12 +328,12 @@ function Hero() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                      whileHover={{ scale: 1.02, x: 4 }}
+                      whileHover={{ scale: 1.01, x: 2 }}
                     >
                       <motion.div
                         className="shrink-0"
-                        whileHover={{ rotate: 12, scale: 1.1 }}
-                        transition={{ type: 'spring', stiffness: 200 }}
+                        whileHover={{ rotate: 6, scale: 1.06 }}
+                        transition={{ type: 'spring', stiffness: 220, damping: 18 }}
                       >
                         <Icon className="text-orange" size={16} />
                       </motion.div>

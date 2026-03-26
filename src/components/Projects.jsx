@@ -233,14 +233,14 @@ function Projects() {
   };
 
   return (
-    <section id="projects" className="section-space bg-white" ref={ref}>
+    <section id="projects" className="section-space section-bg-light-a section-divider-soft" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="section-heading-shell"
         >
           <motion.span
             className="inline-block px-4 py-2 bg-orange/10 text-orange rounded-full text-sm font-semibold mb-4"
@@ -253,7 +253,7 @@ function Projects() {
           <h2 className="heading-display text-navy mb-4">
             Featured <span className="text-orange">Projects</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="section-subtitle-light">
             Showcasing our commitment to excellence in solar energy solutions across Pakistan
           </p>
         </motion.div>
@@ -269,10 +269,10 @@ function Projects() {
             <motion.button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${
+              className={`control-chip ${
                 activeCategory === category.id
-                  ? 'bg-orange text-navy shadow-lg shadow-orange/30 scale-105'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'
+                  ? 'control-chip-active scale-105'
+                  : 'control-chip-idle'
               }`}
               whileHover={activeCategory !== category.id ? { scale: 1.05 } : {}}
               whileTap={{ scale: 0.95 }}
@@ -298,26 +298,26 @@ function Projects() {
                 key={project.id}
                 variants={itemVariants}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.4 }}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-orange/20 transition-all duration-300 bg-white cursor-pointer hover:border-orange/30 border border-transparent"
+                className="group relative overflow-hidden surface-card-light cursor-pointer"
                 onClick={() => openProject(project)}
-                whileHover={{ y: -12, scale: 1.03 }}
+                whileHover={{ y: -8, scale: 1.015 }}
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden bg-gray-200">
+                <div className="relative h-64 overflow-hidden bg-slate-200">
                   <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="media-image"
                     loading="lazy"
                     decoding="async"
-                    whileHover={{ scale: 1.15 }}
-                    transition={{ duration: 0.5 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.45 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/40 to-transparent"></div>
+                  <div className="absolute inset-0 media-overlay-dark"></div>
                   
                   {/* Category Badge */}
                   <motion.div 
@@ -327,7 +327,7 @@ function Projects() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <span className="px-3 py-1.5 bg-orange text-navy text-xs font-bold rounded-full uppercase shadow-lg shadow-orange/30">
+                    <span className="badge-pill-accent uppercase">
                       {project.category}
                     </span>
                   </motion.div>
@@ -340,7 +340,7 @@ function Projects() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <span className="px-3 py-1.5 bg-white/95 text-navy text-sm font-bold rounded-full flex items-center gap-1.5 shadow-lg">
+                    <span className="badge-pill-soft text-sm font-bold">
                       <Zap size={14} className="text-orange" />
                       {project.capacity}
                     </span>
@@ -353,17 +353,17 @@ function Projects() {
                     {project.title}
                   </h3>
                   
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+                  <div className="flex flex-wrap gap-4 text-sm text-body-light mb-4">
                     <motion.div 
                       className="flex items-center gap-1"
-                      whileHover={{ x: 2 }}
+                      whileHover={{ x: 1 }}
                     >
                       <MapPin size={14} className="text-orange flex-shrink-0" />
                       <span>{project.location}</span>
                     </motion.div>
                     <motion.div 
                       className="flex items-center gap-1"
-                      whileHover={{ x: 2 }}
+                      whileHover={{ x: 1 }}
                     >
                       <Calendar size={14} className="text-orange flex-shrink-0" />
                       <span>{project.year}</span>
@@ -379,7 +379,7 @@ function Projects() {
                   >
                     <span>View Details</span>
                     <motion.div
-                      whileHover={{ x: 4 }}
+                      whileHover={{ x: 2 }}
                     >
                       <ExternalLink size={16} />
                     </motion.div>
@@ -426,7 +426,7 @@ function Projects() {
               <motion.button
                 onClick={closeProject}
                 className="absolute top-4 right-4 z-20 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 hover:shadow-xl transition-all group"
-                whileHover={{ scale: 1.2, rotate: 90 }}
+                whileHover={{ scale: 1.08, rotate: 12 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <X size={20} className="group-hover:text-orange transition-colors" />
@@ -455,7 +455,7 @@ function Projects() {
                       <motion.button
                         onClick={prevImage}
                         className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white hover:shadow-lg transition-all"
-                        whileHover={{ scale: 1.15, x: -2 }}
+                        whileHover={{ scale: 1.06, x: -1 }}
                         whileTap={{ scale: 0.9 }}
                       >
                         <ChevronLeft size={20} className="text-navy" />
@@ -463,7 +463,7 @@ function Projects() {
                       <motion.button
                         onClick={nextImage}
                         className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white hover:shadow-lg transition-all"
-                        whileHover={{ scale: 1.15, x: 2 }}
+                        whileHover={{ scale: 1.06, x: 1 }}
                         whileTap={{ scale: 0.9 }}
                       >
                         <ChevronRight size={20} className="text-navy" />
@@ -500,7 +500,7 @@ function Projects() {
                       <h3 className="text-2xl md:text-3xl font-bold text-navy mt-3">
                         {selectedProject.title}
                       </h3>
-                      <p className="text-gray-600 mt-2 font-medium">{selectedProject.client}</p>
+                      <p className="text-body-light mt-2 font-medium">{selectedProject.client}</p>
                     </div>
 
                     {/* Quick Stats */}
@@ -516,7 +516,7 @@ function Projects() {
                           <motion.div 
                             key={index}
                             className="p-4 bg-gradient-to-br from-orange/5 to-orange/10 rounded-xl border border-orange/20 hover:border-orange/50 hover:shadow-lg transition-all"
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.02 }}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 + index * 0.05 }}
@@ -538,7 +538,7 @@ function Projects() {
                       transition={{ delay: 0.35 }}
                     >
                       <h4 className="font-bold text-navy mb-2">About This Project</h4>
-                      <p className="text-gray-600 leading-relaxed">{selectedProject.description}</p>
+                      <p className="text-body-light leading-relaxed">{selectedProject.description}</p>
                     </motion.div>
 
                     {/* Features */}
@@ -556,13 +556,13 @@ function Projects() {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.45 + index * 0.05 }}
-                            whileHover={{ x: 4 }}
+                            whileHover={{ x: 2 }}
                           >
                             <motion.div 
                               className="w-2 h-2 bg-orange rounded-full flex-shrink-0"
-                              whileHover={{ scale: 1.5 }}
+                              whileHover={{ scale: 1.2 }}
                             />
-                            <span className="text-gray-600">{feature}</span>
+                            <span className="text-body-light">{feature}</span>
                           </motion.div>
                         ))}
                       </div>
@@ -577,7 +577,7 @@ function Projects() {
                     >
                       <motion.button 
                         className="flex-1 btn-cta-main btn-cta-main-light-offset px-6 py-3 rounded-lg"
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.98 }}
                       >
                         Request Similar Project

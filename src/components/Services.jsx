@@ -69,7 +69,7 @@ function Services() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.12,
       },
     },
   };
@@ -80,7 +80,7 @@ function Services() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.55,
       },
     },
   };
@@ -111,7 +111,7 @@ function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading-shell"
         >
           <motion.span
             className="inline-block px-4 py-2 bg-orange/20 text-orange rounded-full text-sm font-semibold mb-4"
@@ -139,13 +139,13 @@ function Services() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative bg-navy-light p-8 rounded-2xl border border-orange/20 hover:border-orange/60 hover:shadow-2xl hover:shadow-orange/20 transition-all duration-300 group overflow-hidden"
-                whileHover={{ y: -12, scale: 1.05 }}
+                className="relative surface-card-dark p-8 group overflow-hidden"
+                whileHover={{ y: -8, scale: 1.02 }}
               >
                 {/* Number Badge */}
                 <motion.div 
                   className="absolute top-4 right-4 w-10 h-10 bg-orange/20 rounded-full flex items-center justify-center group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all duration-300"
-                  whileHover={{ scale: 1.15 }}
+                  whileHover={{ scale: 1.08 }}
                 >
                   <span className="text-orange group-hover:text-navy font-bold text-sm">{index + 1}</span>
                 </motion.div>
@@ -155,9 +155,9 @@ function Services() {
 
                 <div className="relative z-10 flex flex-col items-center text-center">
                   <motion.div 
-                    className="mb-6 p-4 bg-orange/10 rounded-xl group-hover:bg-orange transition-colors duration-300"
-                    whileHover={{ scale: 1.12, rotate: 5 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
+                    className="mb-6 icon-chip-dark"
+                    whileHover={{ scale: 1.06, rotate: 2 }}
+                    transition={{ type: 'spring', stiffness: 220, damping: 18 }}
                   >
                     <Icon className="text-orange group-hover:text-navy transition-colors duration-300" size={40} />
                   </motion.div>
@@ -176,7 +176,7 @@ function Services() {
                       >
                         <motion.div 
                           className="w-1.5 h-1.5 bg-orange rounded-full"
-                          whileHover={{ scale: 1.3 }}
+                          whileHover={{ scale: 1.15 }}
                         />
                         {feature}
                       </motion.li>
@@ -221,7 +221,7 @@ function Services() {
                 whileHover={{ scale: 1.08, y: -4 }}
               >
                 <motion.div 
-                  className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all duration-300"
+                  className="icon-chip-light mb-4"
                   whileHover={{ scale: 1.2, rotate: 12 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
@@ -267,7 +267,7 @@ function Services() {
                 whileHover={{ scale: 1.08, y: -4 }}
               >
                 <motion.div 
-                  className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all duration-300"
+                  className="icon-chip-light mb-4"
                   whileHover={{ scale: 1.2, rotate: 12 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
