@@ -81,7 +81,7 @@ function NotFound() {
         >
           <motion.a
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange text-navy font-bold rounded-xl shadow-lg shadow-orange/30 hover:bg-orange-light transition-colors"
+            className="btn-cta-main btn-cta-main-dark-offset rounded-xl"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >

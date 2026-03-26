@@ -96,9 +96,9 @@ function PageLoader() {
             transition={{ delay: 0.3 }}
             className="text-center mb-8"
           >
-            <h1 className="text-4xl font-bold text-white tracking-wider">
+            <p className="text-4xl font-bold text-white tracking-wider" aria-label="Fortecon loading screen">
               FORTECON
-            </h1>
+            </p>
             <p className="text-orange text-sm mt-2 tracking-widest uppercase">
               Standard With Innovation
             </p>

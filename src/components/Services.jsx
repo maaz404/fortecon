@@ -86,7 +86,7 @@ function Services() {
   };
 
   return (
-    <section id="services" className="py-24 bg-navy relative overflow-hidden" ref={ref}>
+    <section id="services" className="section-space bg-navy relative overflow-hidden" ref={ref}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -121,7 +121,7 @@ function Services() {
           >
             What We Offer
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="heading-display text-white mb-4">
             Our <span className="text-orange">Services</span>
           </h2>
         </motion.div>
@@ -139,31 +139,47 @@ function Services() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative bg-navy-light p-8 rounded-2xl border border-orange/20 hover:border-orange/50 transition-all duration-300 group overflow-hidden"
-                whileHover={{ y: -10, scale: 1.02 }}
+                className="relative bg-navy-light p-8 rounded-2xl border border-orange/20 hover:border-orange/60 hover:shadow-2xl hover:shadow-orange/20 transition-all duration-300 group overflow-hidden"
+                whileHover={{ y: -12, scale: 1.05 }}
               >
                 {/* Number Badge */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-orange/20 rounded-full flex items-center justify-center group-hover:bg-orange transition-colors duration-300">
-                  <span className="text-orange group-hover:text-navy font-bold">{index + 1}</span>
-                </div>
+                <motion.div 
+                  className="absolute top-4 right-4 w-10 h-10 bg-orange/20 rounded-full flex items-center justify-center group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all duration-300"
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <span className="text-orange group-hover:text-navy font-bold text-sm">{index + 1}</span>
+                </motion.div>
 
                 {/* Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-orange/0 via-orange/10 to-orange/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-orange/0 via-orange/15 to-orange/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
 
                 <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="mb-6 p-4 bg-orange/10 rounded-xl group-hover:bg-orange transition-colors duration-300">
+                  <motion.div 
+                    className="mb-6 p-4 bg-orange/10 rounded-xl group-hover:bg-orange transition-colors duration-300"
+                    whileHover={{ scale: 1.12, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
                     <Icon className="text-orange group-hover:text-navy transition-colors duration-300" size={40} />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-gray-400 leading-relaxed mb-4">{service.description}</p>
+                  </motion.div>
+                  <h3 className="text-lg font-bold text-white mb-4">{service.title}</h3>
+                  <p className="text-gray-400 leading-relaxed mb-4 text-sm">{service.description}</p>
                   
                   {/* Features List */}
                   <ul className="space-y-2 w-full">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <motion.li 
+                        key={i} 
+                        className="flex items-center gap-2 text-xs text-gray-400 group-hover:text-gray-300 transition-colors"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                        transition={{ delay: 0.9 + index * 0.1 + i * 0.05 }}
+                      >
+                        <motion.div 
+                          className="w-1.5 h-1.5 bg-orange rounded-full"
+                          whileHover={{ scale: 1.3 }}
+                        />
                         {feature}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
@@ -201,14 +217,18 @@ function Services() {
             return (
               <motion.div
                 key={index}
-                className="text-center p-6 bg-gradient-to-br from-orange/10 to-orange/5 rounded-xl border border-orange/20 hover:border-orange/40 transition-colors group"
-                whileHover={{ scale: 1.03 }}
+                className="text-center p-6 bg-gradient-to-br from-orange/10 to-orange/5 rounded-xl border border-orange/20 hover:border-orange/60 hover:shadow-xl hover:shadow-orange/15 transition-all group"
+                whileHover={{ scale: 1.08, y: -4 }}
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange transition-colors duration-300">
-                  <Icon className="text-orange group-hover:text-navy transition-colors" size={24} />
-                </div>
-                <h4 className="text-white font-semibold mb-1">{system.title}</h4>
-                <p className="text-gray-400 text-sm">{system.description}</p>
+                <motion.div 
+                  className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all duration-300"
+                  whileHover={{ scale: 1.2, rotate: 12 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <Icon className="text-orange group-hover:text-navy transition-colors duration-300" size={24} />
+                </motion.div>
+                <h4 className="text-white font-semibold mb-1 text-sm">{system.title}</h4>
+                <p className="text-gray-400 text-xs leading-snug">{system.description}</p>
               </motion.div>
             );
           })}
@@ -243,14 +263,18 @@ function Services() {
             return (
               <motion.div
                 key={index}
-                className="text-center p-6 bg-gradient-to-br from-orange/10 to-orange/5 rounded-xl border border-orange/20 hover:border-orange/40 transition-colors group"
-                whileHover={{ scale: 1.03 }}
+                className="text-center p-6 bg-gradient-to-br from-orange/10 to-orange/5 rounded-xl border border-orange/20 hover:border-orange/60 hover:shadow-xl hover:shadow-orange/15 transition-all group"
+                whileHover={{ scale: 1.08, y: -4 }}
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange transition-colors duration-300">
-                  <Icon className="text-orange group-hover:text-navy transition-colors" size={24} />
-                </div>
-                <h4 className="text-white font-semibold mb-1">{system.title}</h4>
-                <p className="text-gray-400 text-sm">{system.description}</p>
+                <motion.div 
+                  className="inline-flex items-center justify-center w-12 h-12 bg-orange/20 rounded-full mb-4 group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all duration-300"
+                  whileHover={{ scale: 1.2, rotate: 12 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <Icon className="text-orange group-hover:text-navy transition-colors duration-300" size={24} />
+                </motion.div>
+                <h4 className="text-white font-semibold mb-1 text-sm">{system.title}</h4>
+                <p className="text-gray-400 text-xs leading-snug">{system.description}</p>
               </motion.div>
             );
           })}
@@ -262,26 +286,46 @@ function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 p-8 bg-gradient-to-r from-orange/10 via-orange/5 to-orange/10 rounded-2xl border border-orange/20"
+          className="mt-16 p-8 md:p-12 bg-gradient-to-r from-orange/10 via-orange/5 to-orange/10 rounded-2xl border border-orange/20 hover:border-orange/40 shadow-lg hover:shadow-xl hover:shadow-orange/10 transition-all"
         >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-2">Our Process</h3>
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Our Process</h3>
             <p className="text-gray-400">From consultation to completion in 4 simple steps</p>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
             {['Consultation', 'Design', 'Installation', 'Support'].map((step, index) => (
-              <div key={index} className="flex items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-orange rounded-full flex items-center justify-center text-navy font-bold text-lg">
+              <motion.div 
+                key={index} 
+                className="flex items-center gap-4 w-full md:w-auto"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + index * 0.15 }}
+              >
+                <motion.div 
+                  className="flex items-center gap-3 flex-1 md:flex-none"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <motion.div 
+                    className="w-12 h-12 bg-orange rounded-full flex items-center justify-center text-navy font-bold text-lg shadow-lg shadow-orange/30 hover:shadow-orange/50 transition-all group hover:scale-110"
+                    whileHover={{ rotate: 12 }}
+                  >
                     {index + 1}
-                  </div>
-                  <span className="text-white font-medium">{step}</span>
-                </div>
+                  </motion.div>
+                  <span className="text-white font-semibold text-sm md:text-base">{step}</span>
+                </motion.div>
                 {index < 3 && (
-                  <div className="hidden md:block w-16 h-0.5 bg-orange/30" />
+                  <motion.div 
+                    className="flex-1 h-0.5 bg-gradient-to-r from-orange/30 to-orange/10 hidden md:block"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + index * 0.15, duration: 0.6 }}
+                    style={{ transformOrigin: 'left' }}
+                  />
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

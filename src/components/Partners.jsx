@@ -30,7 +30,7 @@ function Partners() {
   const duplicatedPartners = [...shuffledPartners, ...shuffledPartners];
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden">
+    <section className="section-space-compact bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -40,7 +40,7 @@ function Partners() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h3 className="text-lg font-semibold text-orange mb-2">We Partner With The Best</h3>
+          <h2 className="text-lg font-semibold text-orange mb-2">We Partner With The Best</h2>
           <p className="text-gray-600">Premium tier-1 equipment from globally recognized manufacturers</p>
         </motion.div>
 

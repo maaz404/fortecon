@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone, Mail, Sun, Zap } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 function CTABanner() {
   const scrollToContact = () => {
@@ -9,8 +10,17 @@ function CTABanner() {
     }
   };
 
+  const handleQuickContactSubmit = (e) => {
+    e.preventDefault();
+    trackEvent('lead_intent', {
+      source: 'cta_banner_quick_form',
+      action: 'request_callback',
+    });
+    scrollToContact();
+  };
+
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative section-space-compact overflow-hidden">
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -82,7 +92,7 @@ function CTABanner() {
               Start Your Solar Journey
             </motion.span>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="heading-display text-white mb-6">
               Ready to Switch to <span className="text-orange">Solar Energy?</span>
             </h2>
             
@@ -112,18 +122,30 @@ function CTABanner() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <motion.button
-                onClick={scrollToContact}
-                className="group px-8 py-4 bg-orange text-navy font-bold rounded-lg hover:bg-orange-dark transition-colors flex items-center gap-2 shadow-lg shadow-orange/25"
+                onClick={() => {
+                  trackEvent('cta_click', {
+                    cta_name: 'banner_request_quote',
+                    cta_location: 'cta_banner',
+                  });
+                  scrollToContact();
+                }}
+                className="group btn-cta-main btn-cta-main-dark-offset"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Free Quote
+                Request a Quote
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </motion.button>
               
               <motion.a
                 href="tel:+92511234567"
-                className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-navy transition-colors flex items-center gap-2"
+                onClick={() => {
+                  trackEvent('contact_click', {
+                    contact_method: 'phone',
+                    source: 'cta_banner',
+                  });
+                }}
+                className="btn-cta-outline-light"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -158,18 +180,20 @@ function CTABanner() {
                 </p>
 
                 {/* Quick Contact Form */}
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleQuickContactSubmit}>
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-orange focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 transition-colors"
+                    aria-label="Your Name"
                   />
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-orange focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 transition-colors"
+                    aria-label="Phone Number"
                   />
-                  <select className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-orange focus:outline-none transition-colors text-gray-600">
+                  <select className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange/40 transition-colors text-gray-600" aria-label="Select Project Type">
                     <option value="">Select Project Type</option>
                     <option value="residential">Residential</option>
                     <option value="commercial">Commercial</option>
@@ -178,7 +202,7 @@ function CTABanner() {
                   </select>
                   <motion.button
                     type="submit"
-                    className="w-full py-4 bg-navy text-white font-bold rounded-lg hover:bg-navy-light transition-colors"
+                    className="w-full btn-cta-main btn-cta-main-light-offset bg-navy text-white hover:bg-navy-light"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "updatedAt": "2026-03-26",
+  "events": [
+    {
+      "name": "cta_click",
+      "description": "User clicked a primary or secondary CTA.",
+      "parameters": [
+        {
+          "name": "cta_name",
+          "type": "string",
+          "examples": [
+            "hero_explore_services",
+            "hero_view_recent_projects",
+            "navbar_request_quote",
+            "banner_request_quote"
+          ]
+        },
+        {
+          "name": "cta_location",
+          "type": "string",
+          "examples": [
+            "hero",
+            "navbar_desktop",
+            "navbar_mobile",
+            "cta_banner"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lead_intent",
+      "description": "User expressed intent to request a callback.",
+      "parameters": [
+        {
+          "name": "source",
+          "type": "string",
+          "examples": [
+            "cta_banner_quick_form"
+          ]
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "examples": [
+            "request_callback"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact_click",
+      "description": "User clicked a contact method.",
+      "parameters": [
+        {
+          "name": "contact_method",
+          "type": "string",
+          "examples": [
+            "phone",
+            "email",
+            "head office"
+          ]
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "examples": [
+            "cta_banner",
+            "contact_section"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "form_submit",
+      "description": "Contact form submit outcome.",
+      "parameters": [
+        {
+          "name": "form_name",
+          "type": "string",
+          "examples": [
+            "contact_form"
+          ]
+        },
+        {
+          "name": "form_status",
+          "type": "string",
+          "examples": [
+            "success",
+            "error"
+          ]
+        }
+      ]
+    }
+  ],
+  "recommendedCustomDimensions": [
+    "cta_name",
+    "cta_location",
+    "source",
+    "contact_method",
+    "form_name",
+    "form_status",
+    "action"
+  ]
+}

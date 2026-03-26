@@ -97,7 +97,7 @@ function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section className="section-space bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -116,7 +116,7 @@ function Testimonials() {
           >
             Client Success Stories
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
+          <h2 className="heading-display text-navy mb-4">
             What Our <span className="text-orange">Clients Say</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">

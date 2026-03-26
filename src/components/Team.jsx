@@ -60,7 +60,7 @@ function Team() {
   };
 
   return (
-    <section id="team" className="py-20 bg-gray-50" ref={ref}>
+    <section id="team" className="section-space-compact bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -68,7 +68,7 @@ function Team() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
+          <h2 className="heading-display text-navy mb-4">
             Leadership <span className="text-orange">Team</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -95,6 +95,8 @@ function Team() {
                   src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent opacity-80"></div>
                 

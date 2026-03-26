@@ -109,7 +109,7 @@ function StatsCounter() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-navy via-navy-light to-navy relative overflow-hidden" ref={ref}>
+    <section className="section-space bg-gradient-to-br from-navy via-navy-light to-navy relative overflow-hidden" ref={ref}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -158,7 +158,7 @@ function StatsCounter() {
           >
             Our Impact
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="heading-display text-white mb-4">
             Numbers That <span className="text-orange">Speak</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">

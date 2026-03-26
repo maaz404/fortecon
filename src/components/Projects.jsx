@@ -233,7 +233,7 @@ function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-white" ref={ref}>
+    <section id="projects" className="section-space bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -250,7 +250,7 @@ function Projects() {
           >
             Our Portfolio
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
+          <h2 className="heading-display text-navy mb-4">
             Featured <span className="text-orange">Projects</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -265,18 +265,23 @@ function Projects() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
-          {categories.map((category) => (
-            <button
+          {categories.map((category, index) => (
+            <motion.button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${
                 activeCategory === category.id
-                  ? 'bg-orange text-navy shadow-lg shadow-orange/25'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-orange text-navy shadow-lg shadow-orange/30 scale-105'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'
               }`}
+              whileHover={activeCategory !== category.id ? { scale: 1.05 } : {}}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
             >
               {category.label}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -297,57 +302,88 @@ function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-orange/20 transition-all duration-300 bg-white cursor-pointer hover:border-orange/30 border border-transparent"
                 onClick={() => openProject(project)}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -12, scale: 1.03 }}
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
+                <div className="relative h-64 overflow-hidden bg-gray-200">
+                  <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ duration: 0.5 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/40 to-transparent"></div>
                   
                   {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-orange text-navy text-xs font-bold rounded-full uppercase">
+                  <motion.div 
+                    className="absolute top-4 left-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <span className="px-3 py-1.5 bg-orange text-navy text-xs font-bold rounded-full uppercase shadow-lg shadow-orange/30">
                       {project.category}
                     </span>
-                  </div>
+                  </motion.div>
 
                   {/* Capacity Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-white/90 text-navy text-sm font-bold rounded-full flex items-center gap-1">
+                  <motion.div 
+                    className="absolute top-4 right-4"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <span className="px-3 py-1.5 bg-white/95 text-navy text-sm font-bold rounded-full flex items-center gap-1.5 shadow-lg">
                       <Zap size={14} className="text-orange" />
                       {project.capacity}
                     </span>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-orange transition-colors">
+                  <h3 className="text-lg font-bold text-navy mb-3 group-hover:text-orange transition-colors duration-300 line-clamp-2">
                     {project.title}
                   </h3>
                   
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <MapPin size={14} className="text-orange" />
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+                    <motion.div 
+                      className="flex items-center gap-1"
+                      whileHover={{ x: 2 }}
+                    >
+                      <MapPin size={14} className="text-orange flex-shrink-0" />
                       <span>{project.location}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar size={14} className="text-orange" />
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-1"
+                      whileHover={{ x: 2 }}
+                    >
+                      <Calendar size={14} className="text-orange flex-shrink-0" />
                       <span>{project.year}</span>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* View Details Link */}
-                  <div className="mt-4 flex items-center gap-2 text-orange font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <motion.div 
+                    className="flex items-center gap-2 text-orange font-semibold group-hover:gap-3 transition-all duration-300"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                  >
                     <span>View Details</span>
-                    <ExternalLink size={16} />
-                  </div>
+                    <motion.div
+                      whileHover={{ x: 4 }}
+                    >
+                      <ExternalLink size={16} />
+                    </motion.div>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -372,7 +408,7 @@ function Projects() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -380,124 +416,174 @@ function Projects() {
           >
             <motion.div
               className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.8, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 30 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
-              <button
+              <motion.button
                 onClick={closeProject}
-                className="absolute top-4 right-4 z-20 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+                className="absolute top-4 right-4 z-20 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 hover:shadow-xl transition-all group"
+                whileHover={{ scale: 1.2, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <X size={20} />
-              </button>
+                <X size={20} className="group-hover:text-orange transition-colors" />
+              </motion.button>
 
               <div className="grid md:grid-cols-2 h-full">
                 {/* Image Gallery */}
-                <div className="relative h-64 md:h-full bg-navy">
-                  <img
+                <motion.div 
+                  className="relative h-64 md:h-full bg-navy overflow-hidden"
+                  layoutId={`gallery-${selectedProject.id}`}
+                >
+                  <motion.img
                     src={selectedProject.gallery[currentImageIndex]}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
+                    key={currentImageIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
                   />
                   
                   {/* Gallery Navigation */}
                   {selectedProject.gallery.length > 1 && (
                     <>
-                      <button
+                      <motion.button
                         onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white hover:shadow-lg transition-all"
+                        whileHover={{ scale: 1.15, x: -2 }}
+                        whileTap={{ scale: 0.9 }}
                       >
-                        <ChevronLeft size={20} />
-                      </button>
-                      <button
+                        <ChevronLeft size={20} className="text-navy" />
+                      </motion.button>
+                      <motion.button
                         onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white hover:shadow-lg transition-all"
+                        whileHover={{ scale: 1.15, x: 2 }}
+                        whileTap={{ scale: 0.9 }}
                       >
-                        <ChevronRight size={20} />
-                      </button>
+                        <ChevronRight size={20} className="text-navy" />
+                      </motion.button>
                       
                       {/* Image Counter */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white text-sm rounded-full">
+                      <motion.div 
+                        className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-black/60 text-white text-sm rounded-full font-medium"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                      >
                         {currentImageIndex + 1} / {selectedProject.gallery.length}
-                      </div>
+                      </motion.div>
                     </>
                   )}
-                </div>
+                </motion.div>
 
                 {/* Project Details */}
                 <div className="p-8 overflow-y-auto max-h-[60vh] md:max-h-[90vh]">
-                  <div className="space-y-6">
+                  <motion.div 
+                    className="space-y-6"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
                     {/* Header */}
                     <div>
-                      <span className="px-3 py-1 bg-orange/10 text-orange text-xs font-bold rounded-full uppercase">
+                      <motion.span 
+                        className="px-3 py-1.5 bg-orange/10 text-orange text-xs font-bold rounded-full uppercase inline-block"
+                        whileHover={{ scale: 1.05 }}
+                      >
                         {selectedProject.category}
-                      </span>
+                      </motion.span>
                       <h3 className="text-2xl md:text-3xl font-bold text-navy mt-3">
                         {selectedProject.title}
                       </h3>
-                      <p className="text-gray-600 mt-2">{selectedProject.client}</p>
+                      <p className="text-gray-600 mt-2 font-medium">{selectedProject.client}</p>
                     </div>
 
                     {/* Quick Stats */}
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-gray-50 rounded-xl">
-                        <div className="flex items-center gap-2 text-orange mb-1">
-                          <Zap size={18} />
-                          <span className="text-sm font-medium">Capacity</span>
-                        </div>
-                        <p className="text-xl font-bold text-navy">{selectedProject.capacity}</p>
-                      </div>
-                      <div className="p-4 bg-gray-50 rounded-xl">
-                        <div className="flex items-center gap-2 text-orange mb-1">
-                          <Sun size={18} />
-                          <span className="text-sm font-medium">Savings</span>
-                        </div>
-                        <p className="text-xl font-bold text-navy">{selectedProject.savings}</p>
-                      </div>
-                      <div className="p-4 bg-gray-50 rounded-xl">
-                        <div className="flex items-center gap-2 text-orange mb-1">
-                          <MapPin size={18} />
-                          <span className="text-sm font-medium">Location</span>
-                        </div>
-                        <p className="text-xl font-bold text-navy">{selectedProject.location}</p>
-                      </div>
-                      <div className="p-4 bg-gray-50 rounded-xl">
-                        <div className="flex items-center gap-2 text-orange mb-1">
-                          <Building2 size={18} />
-                          <span className="text-sm font-medium">CO₂ Saved</span>
-                        </div>
-                        <p className="text-xl font-bold text-navy">{selectedProject.co2Saved}</p>
-                      </div>
+                      {[
+                        { icon: Zap, label: 'Capacity', value: selectedProject.capacity },
+                        { icon: Sun, label: 'Savings', value: selectedProject.savings },
+                        { icon: MapPin, label: 'Location', value: selectedProject.location },
+                        { icon: Building2, label: 'CO₂ Saved', value: selectedProject.co2Saved },
+                      ].map((stat, index) => {
+                        const StatIcon = stat.icon;
+                        return (
+                          <motion.div 
+                            key={index}
+                            className="p-4 bg-gradient-to-br from-orange/5 to-orange/10 rounded-xl border border-orange/20 hover:border-orange/50 hover:shadow-lg transition-all"
+                            whileHover={{ scale: 1.05 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15 + index * 0.05 }}
+                          >
+                            <div className="flex items-center gap-2 text-orange mb-2">
+                              <StatIcon size={18} />
+                              <span className="text-sm font-medium">{stat.label}</span>
+                            </div>
+                            <p className="text-lg font-bold text-navy">{stat.value}</p>
+                          </motion.div>
+                        );
+                      })}
                     </div>
 
                     {/* Description */}
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.35 }}
+                    >
                       <h4 className="font-bold text-navy mb-2">About This Project</h4>
                       <p className="text-gray-600 leading-relaxed">{selectedProject.description}</p>
-                    </div>
+                    </motion.div>
 
                     {/* Features */}
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
                       <h4 className="font-bold text-navy mb-3">Key Features</h4>
                       <div className="space-y-2">
                         {selectedProject.features.map((feature, index) => (
-                          <div key={index} className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-orange rounded-full" />
+                          <motion.div 
+                            key={index} 
+                            className="flex items-center gap-2 group hover:x-1 transition-all"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.45 + index * 0.05 }}
+                            whileHover={{ x: 4 }}
+                          >
+                            <motion.div 
+                              className="w-2 h-2 bg-orange rounded-full flex-shrink-0"
+                              whileHover={{ scale: 1.5 }}
+                            />
                             <span className="text-gray-600">{feature}</span>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* CTA */}
-                    <div className="flex gap-4">
-                      <button className="flex-1 px-6 py-3 bg-orange text-navy font-bold rounded-lg hover:bg-orange-dark transition-colors">
+                    <motion.div 
+                      className="flex gap-4 pt-4"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <motion.button 
+                        className="flex-1 btn-cta-main btn-cta-main-light-offset px-6 py-3 rounded-lg"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
                         Request Similar Project
-                      </button>
-                    </div>
-                  </div>
+                      </motion.button>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>

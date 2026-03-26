@@ -56,11 +56,15 @@ function Footer() {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="p-2 bg-navy-light rounded-full hover:bg-orange transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    className="p-2.5 bg-navy-light rounded-full hover:bg-orange hover:shadow-lg hover:shadow-orange/50 transition-all group"
+                    whileHover={{ scale: 1.2, rotate: 12 }}
+                    whileTap={{ scale: 0.85 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    <Icon size={20} />
+                    <Icon className="text-orange group-hover:text-navy transition-colors" size={20} />
                   </motion.a>
                 );
               })}
@@ -91,15 +95,23 @@ function Footer() {
             <h4 className="text-xl font-bold mb-6 text-orange">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
+                <motion.li 
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <motion.a
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
-                    className="text-gray-400 hover:text-orange transition-colors inline-block"
+                    className="text-gray-400 hover:text-orange transition-colors inline-flex items-center gap-1 group"
+                    whileHover={{ x: 4 }}
                   >
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-orange text-lg">›</span>
                     {link.name}
-                  </a>
-                </li>
+                  </motion.a>
+                </motion.li>
               ))}
             </ul>
           </div>

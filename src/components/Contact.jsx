@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { trackEvent } from '../utils/analytics';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -49,6 +50,11 @@ function Contact() {
 
       await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
+      trackEvent('form_submit', {
+        form_name: 'contact_form',
+        form_status: 'success',
+      });
+
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -61,6 +67,10 @@ function Contact() {
       setTimeout(() => setSubmitStatus(null), 5000);
     } catch (error) {
       console.error('EmailJS Error:', error);
+      trackEvent('form_submit', {
+        form_name: 'contact_form',
+        form_status: 'error',
+      });
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus(null), 5000);
     } finally {
@@ -90,7 +100,7 @@ function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-navy">
+    <section id="contact" className="section-space-compact bg-navy">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,7 +109,7 @@ function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="heading-display text-white mb-4">
             Get In <span className="text-orange">Touch</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -132,15 +142,29 @@ function Contact() {
                 <motion.a
                   key={index}
                   href={info.link}
-                  className="flex items-start gap-4 p-6 bg-navy-light rounded-xl hover:bg-navy-light/80 transition-colors group"
-                  whileHover={{ x: 10 }}
+                  onClick={() => {
+                    trackEvent('contact_click', {
+                      contact_method: info.title.toLowerCase(),
+                      source: 'contact_section',
+                    });
+                  }}
+                  className="flex items-start gap-4 p-6 bg-gradient-to-br from-navy-light to-navy-light/50 rounded-xl hover:from-navy-light hover:to-navy border border-orange/20 hover:border-orange/50 hover:shadow-lg hover:shadow-orange/10 transition-all group"
+                  whileHover={{ x: 12, scale: 1.02 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <div className="p-3 bg-orange/10 rounded-lg group-hover:bg-orange transition-colors">
-                    <Icon className="text-orange group-hover:text-white transition-colors" size={24} />
-                  </div>
+                  <motion.div 
+                    className="p-3.5 bg-orange/10 rounded-lg group-hover:bg-orange group-hover:shadow-lg group-hover:shadow-orange/50 transition-all flex-shrink-0"
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    <Icon className="text-orange group-hover:text-navy transition-colors duration-300" size={24} />
+                  </motion.div>
                   <div>
-                    <p className="text-gray-400 text-sm mb-1">{info.title}</p>
-                    <p className="text-white font-semibold whitespace-pre-line">{info.content}</p>
+                    <p className="text-gray-400 text-sm mb-1 font-medium">{info.title}</p>
+                    <p className="text-white font-semibold whitespace-pre-line group-hover:text-orange transition-colors duration-300">{info.content}</p>
                   </div>
                 </motion.a>
               );
@@ -155,73 +179,117 @@ function Contact() {
             transition={{ duration: 0.6 }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <input
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                <label htmlFor="contact-name" className="block text-sm text-gray-300 mb-2 font-medium">Name <span className="text-orange">*</span></label>
+                <motion.input
+                  id="contact-name"
                   type="text"
                   name="name"
-                  placeholder="Your Name *"
+                  placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 bg-navy-light text-white rounded-lg border border-gray-700 focus:border-orange focus:outline-none transition-colors"
+                  className="w-full px-6 py-4 bg-navy-light/50 text-white rounded-lg border border-gray-600/30 hover:border-gray-500/50 focus:border-orange focus:ring-2 focus:ring-orange/30 focus:outline-none transition-all placeholder-gray-500 font-medium"
+                  whileFocus={{ scale: 1.01 }}
                 />
-              </div>
+              </motion.div>
 
-              <div>
-                <input
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 }}
+              >
+                <label htmlFor="contact-email" className="block text-sm text-gray-300 mb-2 font-medium">Email <span className="text-orange">*</span></label>
+                <motion.input
+                  id="contact-email"
                   type="email"
                   name="email"
-                  placeholder="Your Email *"
+                  placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 bg-navy-light text-white rounded-lg border border-gray-700 focus:border-orange focus:outline-none transition-colors"
+                  className="w-full px-6 py-4 bg-navy-light/50 text-white rounded-lg border border-gray-600/30 hover:border-gray-500/50 focus:border-orange focus:ring-2 focus:ring-orange/30 focus:outline-none transition-all placeholder-gray-500 font-medium"
+                  whileFocus={{ scale: 1.01 }}
                 />
-              </div>
+              </motion.div>
 
-              <div>
-                <input
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <label htmlFor="contact-phone" className="block text-sm text-gray-300 mb-2 font-medium">Phone</label>
+                <motion.input
+                  id="contact-phone"
                   type="tel"
                   name="phone"
                   placeholder="Your Phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 bg-navy-light text-white rounded-lg border border-gray-700 focus:border-orange focus:outline-none transition-colors"
+                  className="w-full px-6 py-4 bg-navy-light/50 text-white rounded-lg border border-gray-600/30 hover:border-gray-500/50 focus:border-orange focus:ring-2 focus:ring-orange/30 focus:outline-none transition-all placeholder-gray-500 font-medium"
+                  whileFocus={{ scale: 1.01 }}
                 />
-              </div>
+              </motion.div>
 
-              <div>
-                <textarea
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.25 }}
+              >
+                <label htmlFor="contact-message" className="block text-sm text-gray-300 mb-2 font-medium">Message <span className="text-orange">*</span></label>
+                <motion.textarea
+                  id="contact-message"
                   name="message"
-                  placeholder="Your Message *"
+                  placeholder="Your Message"
                   rows="6"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 bg-navy-light text-white rounded-lg border border-gray-700 focus:border-orange focus:outline-none transition-colors resize-none"
-                ></textarea>
-              </div>
+                  className="w-full px-6 py-4 bg-navy-light/50 text-white rounded-lg border border-gray-600/30 hover:border-gray-500/50 focus:border-orange focus:ring-2 focus:ring-orange/30 focus:outline-none transition-all resize-none placeholder-gray-500 font-medium"
+                  whileFocus={{ scale: 1.01 }}
+                ></motion.textarea>
+              </motion.div>
 
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-bold py-4 px-8 rounded-lg transition-colors flex items-center justify-center gap-2 group ${
+                className={`w-full btn-cta-main btn-cta-main-dark-offset group relative overflow-hidden font-semibold py-4 transition-all ${
                   isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-orange text-navy hover:bg-orange-light'
+                    ? 'bg-gray-500 cursor-not-allowed'
+                    : 'bg-orange text-navy hover:bg-orange-dark'
                 }`}
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
               >
                 {isSubmitting ? (
-                  <>
+                  <motion.div
+                    className="flex items-center justify-center gap-2"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
                     <div className="w-5 h-5 border-2 border-navy border-t-transparent rounded-full animate-spin"></div>
-                    Sending...
-                  </>
+                    <span>Sending...</span>
+                  </motion.div>
                 ) : (
                   <>
-                    Send Message
-                    <Send className="group-hover:translate-x-1 transition-transform" size={20} />
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      Send Message
+                      <motion.div whileHover={{ x: 4 }}>
+                        <Send size={20} />
+                      </motion.div>
+                    </span>
                   </>
                 )}
               </motion.button>
@@ -229,20 +297,27 @@ function Contact() {
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500 rounded-lg text-green-500"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400 font-medium backdrop-blur-sm"
                 >
-                  <CheckCircle size={20} />
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <CheckCircle size={20} />
+                  </motion.div>
                   <span>Message sent successfully! We'll get back to you soon.</span>
                 </motion.div>
               )}
 
               {submitStatus === 'error' && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500 rounded-lg text-red-500"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400 font-medium backdrop-blur-sm"
                 >
                   <AlertCircle size={20} />
                   <span>Failed to send message. Please try again or email us directly.</span>

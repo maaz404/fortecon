@@ -57,7 +57,7 @@ function Values() {
   };
 
   return (
-    <section className="py-20 bg-gray-50" ref={ref}>
+    <section className="section-space-compact bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -65,7 +65,7 @@ function Values() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
+          <h2 className="heading-display text-navy mb-4">
             Our Core <span className="text-orange">Values</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">

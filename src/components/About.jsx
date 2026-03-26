@@ -21,7 +21,7 @@ function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white" ref={ref}>
+    <section id="about" className="section-space bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Text */}
@@ -39,7 +39,7 @@ function About() {
               About Us
             </motion.span>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6">
+            <h2 className="heading-display text-navy mb-6">
               Welcome to <span className="text-orange">Fortecon</span>
             </h2>
             
@@ -120,6 +120,8 @@ function About() {
                 src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80"
                 alt="Solar Installation"
                 className="w-full h-[450px] object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent"></div>
               

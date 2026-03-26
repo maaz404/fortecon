@@ -52,7 +52,7 @@ function Timeline() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden" ref={ref}>
+    <section className="section-space bg-gradient-to-b from-white to-gray-50 overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -69,7 +69,7 @@ function Timeline() {
           >
             Our Journey
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
+          <h2 className="heading-display text-navy mb-4">
             Company <span className="text-orange">Timeline</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -185,7 +185,7 @@ function Timeline() {
             To build a sustainable tomorrow, leading Pakistan in civil, solar, and MEP solutions that empower every client to choose their life, their power, their legacy
           </p>
           <motion.button
-            className="px-8 py-3 bg-orange text-navy font-bold rounded-lg hover:bg-orange-dark transition-colors"
+            className="btn-cta-main btn-cta-main-dark-offset px-8 py-3"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
