@@ -65,8 +65,10 @@ function Navbar() {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center gap-[4] h-20">
           {/* Logo */}
+          <div>
+
           <motion.a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
@@ -88,38 +90,41 @@ function Navbar() {
               FORTE<span className="text-orange">C</span>ON
             </span>
           </motion.a>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.replace('#', '');
-              return (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className={`relative px-4 py-2 font-medium transition-colors duration-300 ${
-                    isActive ? 'text-orange' : 'text-white hover:text-orange'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {link.name}
-                  {isActive && (
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange"
-                      layoutId="activeSection"
-                      initial={false}
-                      transition={{
-                        type: 'spring',
-                        stiffness: 380,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </motion.a>
-              );
-            })}
+          <div className="hidden md:flex items-center justify-between ">
+            <div className="flex items-center space-x-1">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace('#', '');
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => scrollToSection(e, link.href)}
+                    className={`relative px-4 py-2 font-medium transition-colors duration-300 ${
+                      isActive ? 'text-orange' : 'text-white hover:text-orange'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange"
+                        layoutId="activeSection"
+                        initial={false}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </motion.a>
+                );
+              })}
+            </div>
 
             {/* CTA Button */}
             <motion.a
@@ -131,7 +136,7 @@ function Navbar() {
                 });
                 scrollToSection(e, '#contact');
               }}
-              className="ml-4 btn-cta-main btn-cta-main-dark-offset px-6 py-2.5"
+              className="btn-cta-main btn-cta-main-dark-offset px-6 py-2.5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

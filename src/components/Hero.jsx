@@ -246,8 +246,8 @@ function Hero() {
                 <span className="block">Build a Better Tomorrow</span>
                 <span className="block mt-2 text-[0.88em] sm:text-[0.92em]">
                   <span className="inline-flex items-baseline whitespace-nowrap">
-                    With{' '}
-                    <span className="text-orange relative inline-block min-w-[4ch]">
+                    With
+                    <span className="text-orange relative inline-block min-w-[4ch] ml-2">
                       {typedWord}
                       <motion.span
                         className="inline-block w-[3px] h-[0.9em] bg-orange ml-1 align-middle"
