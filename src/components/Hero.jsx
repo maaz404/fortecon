@@ -190,7 +190,7 @@ function Hero() {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
         {/* Two Column Layout */}
         <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
           {/* Left Content - Main Text */}
