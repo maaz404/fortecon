@@ -223,8 +223,10 @@ function Hero() {
                     />
                   </div>
                   <div className="inline-flex items-center gap-2.5 flex-wrap">
-                    <span className="px-3 py-1 rounded-full bg-brand text-navy text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-lg shadow-orange/30">
-                      Forte Energy
+                    <span className="relative inline-flex px-3 py-1 rounded-full text-white text-xs sm:text-sm font-bold tracking-wide uppercase overflow-hidden ring-1 ring-white/5">
+                      <span className="absolute inset-0 rounded-full bg-gradient-to-r from-brand to-[#022a20]"></span>
+                      <span className="absolute inset-0 rounded-full bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></span>
+                      <span className="relative z-10 shadow-sm shadow-black/40">Forte Energy</span>
                     </span>
                     <span className="text-orange text-sm font-semibold tracking-widest uppercase">
                       Solar Energy Experts

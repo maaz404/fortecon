@@ -16,7 +16,7 @@ export default {
           dark: "#e8a828",
         },
         brand: {
-          DEFAULT: "#25D366",
+          DEFAULT: "#064e3b",
         },
       },
       fontFamily: {
